@@ -6,3 +6,8 @@
 ### [FNAF World](https://irv77.github.io/hd_fnaf/w/)
 ### [FNAF Pizzeria Simulator](https://irv77.github.io/hd_fnaf/ps/)
 ### [FNAF UCN](https://irv77.github.io/hd_fnaf/ucn/)
+
+---
+
+> Creditos a [irv77](https://github.com/irv77/hd_fnaf)<br>
+NOT OFFICIAL FNAF PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH SCOTT CAWTHON.
