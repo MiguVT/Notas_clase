@@ -99,3 +99,7 @@
 **c) Pilar decide el segundo mes no continuar trabajando en la empresa, ¿debe preavisar a la empresa unos días antes?**
 
 - **Respuesta**: No, durante el período de prueba, tanto la empresa como la trabajadora pueden rescindir el contrato sin necesidad de preaviso, salvo que el contrato o el convenio colectivo estipule lo contrario.
+
+## Aviso de Propiedad Intelectual
+
+Los ejercicios incluidos en este cuaderno digital son propiedad de **Paraninfo** y están protegidos por derechos de autor. Este contenido ha sido utilizado exclusivamente para fines educativos y de consulta personal, cumpliendo con las disposiciones legales aplicables. Queda estrictamente prohibida su reproducción, distribución o uso comercial sin la autorización expresa de la editorial.
