@@ -121,3 +121,30 @@ Para entender cómo se conecta un PC en la red, debemos conocer los siguientes e
 
 ## Conclusión
 Este sistema de identificación nos permite rastrear un PC desde su ubicación física hasta su conexión en el armario de telecomunicaciones y el switch de red, garantizando una gestión ordenada y eficiente de la red.
+
+# Ejercicio Etiquetado PC Clase
+
+### **Etiqueta del PC**
+```plaintext
+[O2-21F-113]
+```
+
+### **Etiqueta de la Roseta**
+```plaintext
+[O2-21F-113]
+```
+
+### **Etiqueta del Cable Horizontal**
+```plaintext
+[O2-2A-113]
+```
+
+### **Etiqueta del Panel de Parcheo**
+```plaintext
+[O2-2A-113]
+```
+
+### **Conexión al Switch**
+```plaintext
+Switch 2 - Puerto 13
+```
