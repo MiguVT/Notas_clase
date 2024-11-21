@@ -1,4 +1,4 @@
-# Ejercicio: Estándares Ethernet
+# Ejercicio 1: Estándares Ethernet
 
 ## Problema
 Debemos interconectar **30 ordenadores** para formar una red cumpliendo las siguientes especificaciones:
@@ -45,3 +45,55 @@ El diseño propuesto cumple con:
 - La conexión de los 30 ordenadores con **5 concentradores** de 8 puertos.
 - La topología en estrella, optimizando la interconexión con un nodo central.
 - El estándar **100BaseT4**, utilizando cableado trenzado y permitiendo velocidades de 100 Mbps.
+
+
+
+# Ejercicio 2: Subestándares Ethernet
+### Caso 1: Distancia < 100 m
+- **Solución**:
+  - Los switches de las dos redes LAN se conectan **directamente** mediante un cable coaxial (10BASE2).
+  - La distancia está dentro del límite soportado por el estándar, por lo que no se necesitan repetidores ni dispositivos adicionales.
+- **Ventajas**:
+  - Simplicidad y bajo coste.
+  - Uso óptimo del hardware disponible.
+
+**Diseño**:
+![Caso 1](https://i.imgur.com/u7Dl9Gt.png)
+
+---
+
+### Caso 2: Distancia ~190 m
+- **Problema**:
+  - La distancia supera el límite máximo de un segmento de 10BASE2 (**185 metros**).
+- **Solución**:
+  - Se coloca un **repetidor** entre las dos redes LAN para amplificar la señal.
+  - Esto divide la conexión en dos segmentos, cada uno menor a 185 metros.
+- **Ventajas**:
+  - Solución sencilla con solo un dispositivo adicional.
+  - Cumple con las especificaciones del estándar 10BASE2.
+
+**Diseño**:
+![Caso 2](https://i.imgur.com/fa5rx6D.png)
+
+---
+
+### Caso 3: Distancia ~400 m
+- **Problema**:
+  - La distancia total (400 metros) es mucho mayor que la soportada por un único segmento o un solo repetidor.
+- **Solución**:
+  - Se utilizan **dos repetidores** para dividir la conexión en tres segmentos, cada uno menor a **185 metros**.
+  - Esto asegura que la señal se mantenga dentro de los límites del estándar.
+- **Ventajas**:
+  - Solución escalable para largas distancias.
+  - Permite mantener la integridad de la red.
+
+**Diseño**:
+![Caso 3](https://i.imgur.com/9hLsGXQ.png)
+
+---
+
+## Conclusión
+Este ejercicio muestra cómo ajustar una red local a diferentes distancias utilizando el subestándar **10BASE2**. Aprendi que:
+1. La solución más sencilla (conexión directa) es suficiente para distancias cortas.
+2. Los **repetidores** son esenciales para extender la red y mantener la conectividad en distancias mayores.
+3. La planificación adecuada asegura que las redes cumplan con los estándares técnicos sin exceder sus límites.
