@@ -122,9 +122,8 @@
 
 ### **5.2 Ejercicios de Fibra**
 - Calcula la atenuación de una fibra óptica de 10 km con pérdidas de 0,2 dB/km y 2 conectores (0,5 dB cada uno):
-  \[
-  \text{Atenuación total} = (10 \times 0,2) + (2 \times 0,5) = 3 \, \text{dB}
-  \]
+![imagen](https://github.com/user-attachments/assets/d6e97fbc-88a2-42fe-9a8f-02dbfaea0153)
+
 
 ---
 
@@ -162,16 +161,14 @@
    - **Pérdida por kilómetro** (dB/km).
    - **Conectores o empalmes** (cada uno añade pérdida en dB).
 2. Usa la fórmula:
-   \[
-   \text{Atenuación total} = (\text{Distancia} \times \text{Pérdida por km}) + (\text{Conectores} \times \text{Pérdida por conector})
-   \]
+![imagen](https://github.com/user-attachments/assets/a40bbcd1-339b-4b51-a98e-ca69d14f077b)
+
 3. Ejemplo:
    - Distancia: 10 km.
    - Pérdida por km: 0,2 dB.
    - 2 conectores con pérdida de 0,5 dB cada uno.
-   \[
-   \text{Atenuación total} = (10 \times 0,2) + (2 \times 0,5) = 3 \, \text{dB}
-   \]
+![imagen](https://github.com/user-attachments/assets/a1c1b070-1995-455f-aa3f-c5b599d4c8c9)
+
 
 ---
 
