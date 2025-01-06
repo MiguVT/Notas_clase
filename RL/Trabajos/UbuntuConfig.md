@@ -176,4 +176,4 @@ Este documento explica paso a paso cómo configurar una IP estática y una IP di
      ```
 
 * Si abres el navegador y te carga una pagina web (siempre que no este en local) significa que todo lo mencionado anteriormente funciona, si eso comprobar ifconfig para saber si se ha cambiado correctamente.
-* ![image](https://github.com/user-attachments/assets/d34863c7-1e1b-4cd7-9fd9-f04ddf4daa93)
+  ![image](https://github.com/user-attachments/assets/d34863c7-1e1b-4cd7-9fd9-f04ddf4daa93)
