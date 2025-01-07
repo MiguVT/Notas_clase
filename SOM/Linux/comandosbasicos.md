@@ -1,7 +1,3 @@
-Claro, aquí tienes un README mejorado con los comandos básicos de Linux, incluyendo `whereis` y `alias`:
-
----
-
 # Comandos Básicos de Linux
 
 Este documento cubre algunos de los comandos más útiles en Linux para interactuar con el sistema y obtener información sobre él.
@@ -106,7 +102,3 @@ alias ll="ls -la"
 ```
 
 **Nota:** Puedes ver todos los alias definidos con el comando `alias` sin argumentos.
-
----
-
-¡Espero que encuentres útil esta información para trabajar de manera más eficiente con Linux!
