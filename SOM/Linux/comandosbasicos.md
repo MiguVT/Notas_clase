@@ -1,6 +1,6 @@
 # Comandos Básicos de Linux
 
-Este documento cubre algunos de los comandos más útiles en Linux para interactuar con el sistema y obtener información sobre él.
+Esta sección cubre algunos de los comandos más útiles en Linux para interactuar con el sistema y obtener información sobre él.
 
 ---
 
@@ -102,3 +102,47 @@ alias ll="ls -la"
 ```
 
 **Nota:** Puedes ver todos los alias definidos con el comando `alias` sin argumentos.
+
+---
+
+### `unalias [alias]` 
+Elimina un alias.
+
+**Ejemplo:**
+```bash
+unalias cls
+unalias ll
+```
+
+**Opciones:**
+- `-a`: Elimina todos los alias existentes.
+
+
+---
+
+### `uname [opciones]` 
+Muestra info del sistema operativo y el equipo.
+
+**Ejemplo:**
+```bash
+uname (-s)
+```
+
+**Opciones:**
+- `-s`: Opcion predeterminada si no se especifica ninguna, muestra el nombre del nucleo.
+
+---
+
+# Actividades pag 106
+Esta sección cubre las "Actividades de aplicación" de la pag 106.
+
+3.12 `cal -m feb 2007`
+3.13 `date`
+3.14 `clear` (o `cls` si tienes el alias como en mi caso)
+3.15 `history`
+3.16 `neofetch` (hay otras opciones, pero es la que personalmente yo uso, se puede hacer manual con `uname -r`, `cat /proc/version`, entre otras, el que esta documentado en el libro es `uname -a`)
+3.17 `info wh`
+3.18 `alias meses="clear; cal -3; whoami"`
+3.19 `alias conectados="clear; date; who"`
+3.20 `alias`
+3.21 `unalias -a` (En el caso de tener otros alias, podriamos usar `unalias conectados meses`)
