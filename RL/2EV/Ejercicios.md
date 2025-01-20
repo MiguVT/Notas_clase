@@ -285,3 +285,44 @@ Broadcast        -> 10001100.10111110.11111111.11111111 (140.190.255.255)
 **Dirección de Red:** 140.190.192.0
 **Broadcast:** 140.190.255.255
 
+---
+
+
+## Ejercicio 4: Cálculo de dirección de red, broadcast y máscara
+
+### **Rango de IPs: 194.143.17.145 - 194.143.17.158**
+#### Observaciones:
+- El rango está contenido dentro de una subred. Las direcciones van desde 145 hasta 158, lo cual implica que la subred tiene capacidad para cubrir estas IPs.
+- Se buscará la máscara más ajustada que incluya ambas direcciones.
+
+#### Paso 1: Convertir las direcciones IP a binario
+```
+194.143.17.145 -> 11000010.10001111.00010001.10010001
+194.143.17.158 -> 11000010.10001111.00010001.10011110
+```
+
+#### Paso 2: Encontrar la dirección de red
+- Para hallar la dirección de red, realizamos una operación AND entre las direcciones en binario considerando la parte común.
+```
+194.143.17.145 -> 11000010.10001111.00010001.10010001
+194.143.17.158 -> 11000010.10001111.00010001.10011110
+Red             -> 11000010.10001111.00010001.10010000 (194.143.17.144)
+```
+
+#### Paso 3: Encontrar la dirección de broadcast
+- Para hallar la dirección de broadcast, completamos con unos el resto de la subred.
+```
+Broadcast       -> 11000010.10001111.00010001.10011111 (194.143.17.159)
+```
+
+#### Paso 4: Determinar la máscara de subred
+- La máscara debe incluir las IPs del rango sin exceder. Se observa que el rango pertenece a una subred con máscara de /28 (255.255.255.240).
+```
+Máscara        -> 11111111.11111111.11111111.11110000 (255.255.255.240)
+```
+
+#### Resumen:
+**Dirección de Red:** 194.143.17.144  
+**Broadcast:** 194.143.17.159  
+**Máscara:** 255.255.255.240
+
