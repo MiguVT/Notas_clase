@@ -330,23 +330,81 @@ Máscara        -> 11111111.11111111.11111111.11110000 (255.255.255.240)
 
 ### **21/01/25**
 
-## **Ejercicio 2: Subred que incluya dos direcciones IP y mayor número de dispositivos posibles**
+## **Ejercicio 1: Red con IP 172.175.12.2 /22**
 
-### **Direcciones IP:**
-- 192.168.43.3  
-- 192.168.5.23  
+### a) Máscara de red en notación decimal y binario:
+- **Notación Decimal Puntuada:** 255.255.252.0  
+- **Binario:** `11111111.11111111.11111100.00000000`
 
-#### Cálculo en binario:
+### b) Dirección de red:
+```
+IP:           172.175.12.2   -> 10101100.10101111.00001100.00000010
+Máscara:      255.255.252.0  -> 11111111.11111111.11111100.00000000
+Resultado:    172.175.12.0   -> 10101100.10101111.00001100.00000000
+```
+**Dirección de red:** 172.175.12.0
+
+### c) Dirección de difusión:
+```
+Dirección de red:   172.175.12.0 -> 10101100.10101111.00001100.00000000
+Complemento máscara: 0.0.3.255   -> 00000000.00000000.00000011.11111111
+Resultado difusión: 172.175.15.255 -> 10101100.10101111.00001111.11111111
+```
+**Dirección de difusión:** 172.175.15.255
+
+### d) Dirección 172.175.14.0, ¿es válida en la misma red?
+La red **172.175.12.0/22** tiene un rango de direcciones:
+- Desde: **172.175.12.1**  
+- Hasta: **172.175.15.254**  
+
+**Conclusión:** La dirección **172.175.14.0** está dentro del rango, por lo que **sí es válida**.
+
+---
+
+## **Ejercicio 2: Máscara para 192.168.43.3 y 192.168.5.23**
+
+### Cálculo:
+#### Binario de las IPs:
 ```
 192.168.43.3 ->  11000000.10101000.00101011.00000011
 192.168.5.23 ->  11000000.10101000.00000101.00010111
-/16          ->  11111111.11111111.00000000.00000000
-Red           ->  11000000.10101000.00000000.00000000 (192.168.0.0)
-Broadcast      ->  11000000.10101000.11111111.11111111 (192.168.255.255)
 ```
+Los primeros **16 bits** son comunes (`192.168`), por lo que usamos una máscara **/16**.
 
-### **Resultado:**
-- **Dirección de Red:** 192.168.0.0  
-- **Broadcast:** 192.168.255.255  
-- **Máscara:** 255.255.0.0 /16  
-- **Número máximo de dispositivos:** 2^16 - 2 = 65534
+### Resultado:
+- **Máscara:** 255.255.0.0 (/16)
+- **Dirección de red:** 192.168.0.0
+- **Broadcast:** 192.168.255.255
+- **Número máximo de dispositivos:** \( 2^{16} - 2 = 65,534 \).
+
+---
+
+## **Ejercicio 3: Clase y tipo de las direcciones**
+
+### a) 12.45.56.78
+- **Clase:** A (primer octeto: 12 → 0-127)  
+- **Tipo:** Pública  
+
+### b) 111.222.111.222
+- **Clase:** A (primer octeto: 111 → 0-127)  
+- **Tipo:** Pública  
+
+### c) 222.125.1.1
+- **Clase:** C (primer octeto: 222 → 192-223)  
+- **Tipo:** Pública  
+
+### d) 172.14.5.1
+- **Clase:** B (primer octeto: 172 → 128-191)  
+- **Tipo:** Pública  
+
+### e) 172.35.1.1
+- **Clase:** B (primer octeto: 172 → 128-191)  
+- **Tipo:** Pública  
+
+### f) 10.20.30.40
+- **Clase:** A (primer octeto: 10 → 0-127)  
+- **Tipo:** Privada (rango reservado: 10.0.0.0 - 10.255.255.255)  
+
+### g) 1.2.3.4
+- **Clase:** A (primer octeto: 1 → 0-127)  
+- **Tipo:** Pública
