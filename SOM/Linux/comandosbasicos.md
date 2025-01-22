@@ -153,7 +153,7 @@ Aquí está la versión mejorada de la sección sobre gestión de archivos y dir
 
 ---
 
-# Gestión de Archivos y Directorios
+# Gestión de Archivos
 
 Un archivo o fichero es un conjunto de información relativa a un mismo concepto que se almacena bajo un nombre que lo identifica. Este nombre puede tener entre 1 y 255 caracteres, formados por cualquier carácter excepto `/`, que se utiliza para el directorio raíz y como separador en las rutas.
 
@@ -261,3 +261,41 @@ El archivo `.bashrc` almacena configuraciones específicas para el intérprete d
   ```bash
   source ~/.bashrc
   ```
+
+---
+
+# **Directorios o Carpetas**
+
+En Linux, los directorios son equivalentes a las carpetas en otros sistemas operativos. Se utilizan para organizar archivos y otros directorios.
+
+---
+
+### **Directorios Especiales:**
+1. **`.` (Directorio actual):**  
+   Representa el directorio en el que te encuentras actualmente.
+
+2. **`..` (Directorio padre):**  
+   Representa el directorio que contiene al actual. Por ejemplo, moverte al directorio padre:
+   ```bash
+   cd ..
+   ```
+
+3. **Directorio personal (`~`):**  
+   Es el directorio privado de cada usuario, normalmente ubicado en `/home/usuario`. Puedes acceder con:
+   ```bash
+   cd ~
+   ```
+
+---
+
+### **Rutas:**
+1. **Ruta absoluta:**  
+   Especifica la ubicación completa de un archivo o directorio desde la raíz (`/`).
+   - Ejemplo: `/home/usuario/documentos`
+
+2. **Ruta relativa:**  
+   Especifica la ubicación de un archivo o directorio desde el directorio actual.
+   - Ejemplo: Si estás en `/home/usuario`, la ruta relativa a `documentos` sería:
+     ```bash
+     cd documentos
+     ```
