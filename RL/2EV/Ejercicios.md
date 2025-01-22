@@ -408,3 +408,74 @@ Los primeros **16 bits** son comunes (`192.168`), por lo que usamos una máscara
 ### g) 1.2.3.4
 - **Clase:** A (primer octeto: 1 → 0-127)  
 - **Tipo:** Pública
+
+
+### **22/01/25**
+
+## **Ejercicio 2: Comprueba si las siguientes parejas de ordenadores están en la misma red**
+
+### **a) 172.120.34.78 /21 y 172.120.60.30 /21**
+
+#### Máscara de red:
+- **Notación decimal:** 255.255.248.0  
+- **Binario:** `11111111.11111111.11111000.00000000`
+
+#### Dirección de red:
+- **172.120.34.78**
+  - IP: `172.120.34.78`  
+  - Máscara: `255.255.248.0`  
+  - Dirección de red: **172.120.32.0**
+
+- **172.120.60.30**
+  - IP: `172.120.60.30`  
+  - Máscara: `255.255.248.0`  
+  - Dirección de red: **172.120.56.0**
+
+#### Conclusión:
+- **No están en la misma red**, ya que:  
+  - Red 1: **172.120.32.0/21**  
+  - Red 2: **172.120.56.0/21**
+
+#### Máximo de equipos por red:
+- Con una máscara de `/21`:  
+  - \(2^{11} - 2 = 2,046\) dispositivos.
+
+#### Máscara necesaria para incluir ambas IPs en la misma red:
+- Para que ambas direcciones estén en la misma red, usamos una máscara **/19**:  
+  - Dirección de red: **172.120.32.0**  
+  - Broadcast: **172.120.63.255**  
+  - Máximo de dispositivos: \(2^{13} - 2 = 8,190\).
+
+---
+
+### **b) 192.168.1.130 /27 y 192.168.1.160 /27**
+
+#### Máscara de red:
+- **Notación decimal:** 255.255.255.224  
+- **Binario:** `11111111.11111111.11111111.11100000`
+
+#### Dirección de red:
+- **192.168.1.130**
+  - IP: `192.168.1.130`  
+  - Máscara: `255.255.255.224`  
+  - Dirección de red: **192.168.1.128**
+
+- **192.168.1.160**
+  - IP: `192.168.1.160`  
+  - Máscara: `255.255.255.224`  
+  - Dirección de red: **192.168.1.160**
+
+#### Conclusión:
+- **No están en la misma red**, ya que:  
+  - Red 1: **192.168.1.128/27**  
+  - Red 2: **192.168.1.160/27**
+
+#### Máximo de equipos por red:
+- Con una máscara de `/27`:  
+  - \(2^5 - 2 = 30\) dispositivos.
+
+#### Máscara necesaria para incluir ambas IPs en la misma red:
+- Para que ambas direcciones estén en la misma red, usamos una máscara **/26**:  
+  - Dirección de red: **192.168.1.128**  
+  - Broadcast: **192.168.1.191**  
+  - Máximo de dispositivos: \(2^6 - 2 = 62\).
