@@ -436,16 +436,6 @@ Los primeros **16 bits** son comunes (`192.168`), por lo que usamos una máscara
   - Red 1: **172.120.32.0/21**  
   - Red 2: **172.120.56.0/21**
 
-#### Máximo de equipos por red:
-- Con una máscara de `/21`:  
-  - \(2^{11} - 2 = 2,046\) dispositivos.
-
-#### Máscara necesaria para incluir ambas IPs en la misma red:
-- Para que ambas direcciones estén en la misma red, usamos una máscara **/19**:  
-  - Dirección de red: **172.120.32.0**  
-  - Broadcast: **172.120.63.255**  
-  - Máximo de dispositivos: \(2^{13} - 2 = 8,190\).
-
 ---
 
 ### **b) 192.168.1.130 /27 y 192.168.1.160 /27**
@@ -470,12 +460,26 @@ Los primeros **16 bits** son comunes (`192.168`), por lo que usamos una máscara
   - Red 1: **192.168.1.128/27**  
   - Red 2: **192.168.1.160/27**
 
-#### Máximo de equipos por red:
-- Con una máscara de `/27`:  
-  - \(2^5 - 2 = 30\) dispositivos.
+---
 
-#### Máscara necesaria para incluir ambas IPs en la misma red:
-- Para que ambas direcciones estén en la misma red, usamos una máscara **/26**:  
-  - Dirección de red: **192.168.1.128**  
-  - Broadcast: **192.168.1.191**  
-  - Máximo de dispositivos: \(2^6 - 2 = 62\).
+### **c) 20.10.1.152 /6 y 30.100.212.122 /6**
+
+#### Máscara de red:
+- **Notación decimal:** 252.0.0.0  
+- **Binario:** `11111100.00000000.00000000.00000000`
+
+#### Dirección de red:
+- **20.10.1.152**
+  - IP: `20.10.1.152`  
+  - Máscara: `252.0.0.0`  
+  - Dirección de red: **20.0.0.0**
+
+- **30.100.212.122**
+  - IP: `30.100.212.122`  
+  - Máscara: `252.0.0.0`  
+  - Dirección de red: **28.0.0.0**
+
+#### Conclusión:
+- **No están en la misma red**, ya que:  
+  - Red 1: **20.0.0.0/6**  
+  - Red 2: **28.0.0.0/6**
