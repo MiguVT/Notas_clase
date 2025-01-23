@@ -149,10 +149,6 @@ Esta sección cubre las "Actividades de aplicación" de la pag 106.
 
 ---
 
-Aquí está la versión mejorada de la sección sobre gestión de archivos y directorios, incluyendo la diferencia entre enlaces simbólicos y enlaces directos en formato de tabla:
-
----
-
 # Gestión de Archivos
 
 Un archivo o fichero es un conjunto de información relativa a un mismo concepto que se almacena bajo un nombre que lo identifica. Este nombre puede tener entre 1 y 255 caracteres, formados por cualquier carácter excepto `/`, que se utiliza para el directorio raíz y como separador en las rutas.
