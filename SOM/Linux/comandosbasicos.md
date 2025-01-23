@@ -295,3 +295,248 @@ En Linux, los directorios son equivalentes a las carpetas en otros sistemas oper
      ```bash
      cd documentos
      ```
+
+---
+
+
+# **Operaciones Ficheros y Directorios en Linux - I**
+
+### **1. ls (list)**
+
+**Muestra información sobre ficheros y directorios.**  
+Formato: `ls [opciones] [argumentos]`
+
+1. Muestra el manual de usuario del comando `ls`.  
+   Comando: `man ls`  
+   ![imagen](https://github.com/user-attachments/assets/5eaf5a78-d03f-4ac6-ba94-8581dd852aeb)
+
+
+2. Lista todos los archivos del directorio `bin` (con ruta absoluta).  
+   Comando: `ls /bin`  
+   ![imagen](https://github.com/user-attachments/assets/7aa4da13-c538-4fd9-a8bd-2a83f4fd97de)
+
+
+3. Lista todos los archivos del directorio `bin` (con ruta relativa).  
+   Comando: `ls bin`  
+   ![imagen](https://github.com/user-attachments/assets/55b0e10b-e58f-4647-bde5-5b5959553be0)
+
+
+4. Muestra todos los archivos del directorio `tmp`.  
+   Comando: `ls /tmp`  
+   ![imagen](https://github.com/user-attachments/assets/b730f48f-8aef-4c87-b28d-1cc653769750)
+
+
+5. Lista todos los archivos, incluidos los ocultos, del directorio raíz.  
+   Comando: `ls -a /`
+   ![imagen](https://github.com/user-attachments/assets/d44b5119-3b07-4f5d-97f3-49bde8f53d1c)
+
+   
+
+7. Muestra el contenido del directorio `usr` y sus subdirectorios.  
+   Comando: `ls -R /usr`  
+   ![imagen](https://github.com/user-attachments/assets/15155867-d815-4bb1-aac9-a2eb675a1b96)
+
+
+8. Lista todos los ficheros del directorio `home` mostrando su número de inodo.  
+   Comando: `ls -i /home`  
+   ![imagen](https://github.com/user-attachments/assets/a4f46da3-ae1c-46d9-bd40-131d2c624077)
+
+
+---
+
+### **2. pwd (print working directory)**
+
+**Muestra la ruta absoluta del directorio actual donde nos encontramos.**  
+Formato: `pwd`
+
+8. Muestra el manual de usuario del comando `pwd`.  
+   Comando: `man pwd`  
+   ![imagen](https://github.com/user-attachments/assets/20d611c2-6804-4ee5-8bab-ccb84e01582c)
+
+
+9. Muestra la ruta absoluta del directorio en el que te encuentras.  
+   Comando: `pwd`  
+   ![imagen](https://github.com/user-attachments/assets/6a9a9338-5820-4eed-9ca1-bfec38be0fde)
+
+
+---
+
+### **3. cd (change directory)**
+
+**Cambia de directorio.**  
+Formato: `cd [opciones] [directorio]`
+
+10. Muévete al directorio raíz y comprueba que estás en él.  
+    Comando:  
+    ```
+    cd /
+    pwd
+    ```  
+    ![imagen](https://github.com/user-attachments/assets/164be448-03c1-4572-b810-e5c363fb566a)
+
+
+11. Cambia al directorio `/etc/init.d`.  
+    Comando: `cd /etc/init.d`  
+    ![imagen](https://github.com/user-attachments/assets/2b9839f7-3fa4-4f8d-a597-b267a3871e24)
+
+
+12. Muévete a tu directorio personal de usuario (recuerda que hay 2 formas de hacerlo).  
+    Comandos:  
+    ```
+    cd ~
+    cd /home/[nombre_usuario]
+    ```  
+    ![imagen](https://github.com/user-attachments/assets/33436887-00b0-4aef-9269-3b6629ff579b)
+
+
+13. Sitúate en el directorio raíz (ruta absoluta).  
+    Comando: `cd /`  
+    
+
+14. Sitúate en el directorio raíz (ruta relativa).  
+    Comando: `cd ..`  
+    ![imagen](https://github.com/user-attachments/assets/621fa13f-0649-4c52-b130-bebc36c7391f)
+
+
+---
+
+### **4. mkdir (make directories)**
+
+**Crea directorios.**  
+Formato: `mkdir [opciones] [directorio/s]`
+
+15. Crea el siguiente árbol de directorios. PRÁCTICA 2, estará situado en tu Escritorio de usuario.  
+    Comandos:  
+    ```
+    mkdir -p ~/Escritorio/PRÁCTICA2/{PERSONAL/{MIS_PROGRAMAS,EXPEDIENTE},ESTUDIOS/2021/SOM,MISCELANEA/{TXT,JPG}}
+    ```  
+    ![imagen](https://github.com/user-attachments/assets/ac4c8c4b-1bb4-4d35-a719-f455fa3f8a0e)
+
+
+---
+
+### **16. Muestra el contenido de la carpeta PRÁCTICA2**
+- Comando:  
+  ```
+  ls ~/Escritorio/PRÁCTICA2
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/dcda252b-ba72-4a40-b1e2-f1ed83c7243e)
+
+
+
+---
+
+### **17. Muévete a la carpeta PERSONAL**
+- Comando:  
+  ```
+  cd ~/Escritorio/PRÁCTICA2/PERSONAL
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/7eb6a185-b724-4144-8ba3-d9184b5c45aa)
+
+
+
+---
+
+### **18. Muestra el contenido de la carpeta EXPEDIENTE sin cambiar de directorio activo**
+- Comando:  
+  ```
+  ls ~/Escritorio/PRÁCTICA2/PERSONAL/EXPEDIENTE
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/a3f8c2c2-4c27-4d28-9460-4ebb448772cc)
+
+
+
+---
+
+### **19. Sitúate en la carpeta ESTUDIOS utilizando únicamente un comando**
+- Comando:  
+  ```
+  cd ~/Escritorio/PRÁCTICA2/ESTUDIOS
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/4bb76609-f3b9-4b57-a9eb-7b5c07560aa6)
+
+
+
+---
+
+### **20. Comprueba que te encuentras en la carpeta ESTUDIOS**
+- Comando:  
+  ```
+  pwd
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/4ad72858-803b-42b8-b1a4-5306d6c66d2f)
+
+
+
+---
+
+### **21. Muestra el contenido de la carpeta ESTUDIOS**
+- Comando:  
+  ```
+  ls
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/de8499e0-b0d2-413b-b0c5-2ef051aae25c)
+
+
+
+---
+
+### **22. Muestra el contenido de la carpeta PRÁCTICA2 (sin moverte del directorio)**
+- Comando:  
+  ```
+  ls ~/Escritorio/PRÁCTICA2
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/2d946c1f-9470-40c9-96b1-c0d0b8c106bc)
+
+
+
+---
+
+### **23. Muestra el contenido de la carpeta PERSONAL (sin moverte del directorio)**
+- Comando:  
+  ```
+  ls ~/Escritorio/PRÁCTICA2/PERSONAL
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/b2b55521-5dc2-4b51-9fee-fa7f862872d1)
+
+
+---
+
+### **24. Muestra el contenido de la carpeta padre de donde estás (sin moverte del directorio)**
+- Comando:  
+  ```
+  ls ..
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/d4ee4407-c9f8-4ac0-b202-6978b0635d68)
+
+
+
+
+---
+
+### **25. Sitúate en la carpeta TXT. Utiliza únicamente un comando**
+- Comando:  
+  ```
+  cd ~/Escritorio/PRÁCTICA2/MISCELANEA/TXT
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/71dfaf61-6136-45b2-bef9-b2bd0ab5b8e5)
+
+
+---
+
+### **26. Muestra el contenido del directorio en el que te encuentras**
+- Comando:  
+  ```
+  ls
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/d620b0ea-516b-4e4b-9f73-cfad70aa422a)
+
+
+---
+
+### **27. Muestra el contenido del directorio en el que te encuentras en forma de lista**
+- Comando:  
+  ```
+  ls -l
+  ```  
+  ![imagen](https://github.com/user-attachments/assets/14096aa3-d22b-4382-9c34-bb1cf2d4f46e)
