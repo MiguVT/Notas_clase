@@ -391,11 +391,10 @@ Formato: `cd [opciones] [directorio]`
 
 13. Sitúate en el directorio raíz (ruta absoluta).  
     Comando: `cd /`  
-    
+    ![imagen](https://github.com/user-attachments/assets/621fa13f-0649-4c52-b130-bebc36c7391f)
 
 14. Sitúate en el directorio raíz (ruta relativa).  
-    Comando: `cd ..`  
-    ![imagen](https://github.com/user-attachments/assets/621fa13f-0649-4c52-b130-bebc36c7391f)
+    Comando: `cd ../..`  
 
 
 ---
