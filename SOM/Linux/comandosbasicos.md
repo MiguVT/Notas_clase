@@ -539,3 +539,153 @@ Formato: `mkdir [opciones] [directorio/s]`
   ls -l
   ```  
   ![imagen](https://github.com/user-attachments/assets/14096aa3-d22b-4382-9c34-bb1cf2d4f46e)
+
+---
+
+### **28/01/25**
+
+## **Operaciones Ficheros y Directorios en Linux - II**
+
+---
+
+### **1. Muestra la fecha y hora del sistema**
+- Comando:  
+  ```
+  date
+  ```
+
+---
+
+### **2. Cámbiate al directorio /etc**
+- Comando:  
+  ```
+  cd /etc
+  ```
+
+---
+
+### **3. Crea un directorio denominado SOM (¿Te deja?)**
+- Comando:  
+  ```
+  mkdir /etc/SOM
+  ```
+
+---
+
+### **4. Cámbiate al directorio /tmp**
+- Comando:  
+  ```
+  cd /tmp
+  ```
+
+---
+
+### **5. Crea el directorio TEMPORAL**
+- Comando:  
+  ```
+  mkdir TEMPORAL
+  ```
+
+---
+
+### **6. Muestra la ayuda que se da del comando SORT**
+- Comando:  
+  ```
+  man sort
+  ```
+
+---
+
+### **7. Comprobar que has cambiado de directorio**
+- Comando:  
+  ```
+  pwd
+  ```
+
+---
+
+### **8. Listar todos los ficheros del directorio TEMPORAL**
+- Comando:  
+  ```
+  ls -l /tmp/TEMPORAL
+  ```
+
+---
+
+### **9. Crear los directorios dir1, dir2 y dir3 en el directorio TEMPORAL**
+- Comando:  
+  ```
+  mkdir /tmp/TEMPORAL/{dir1,dir2,dir3}
+  ```
+
+---
+
+### **10. Dentro de dir1 crear el directorio dir11**
+- Comando:  
+  ```
+  mkdir /tmp/TEMPORAL/dir1/dir11
+  ```
+
+---
+
+### **11. Dentro del directorio dir3 crear el directorio dir31**
+- Comando:  
+  ```
+  mkdir /tmp/TEMPORAL/dir3/dir31
+  ```
+
+---
+
+### **12. Dentro del directorio dir31, crear los directorios dir311 y dir312**
+- Comando:  
+  ```
+  mkdir /tmp/TEMPORAL/dir3/dir31/{dir311,dir312}
+  ```
+
+---
+
+### **13. Sitúate en el directorio TEMPORAL**
+- Comando:  
+  ```
+  cd /tmp/TEMPORAL
+  ```
+
+---
+
+### **14. Elimina el directorio dir3 junto con su contenido**
+- Comando:  
+  ```
+  rm -r /tmp/TEMPORAL/dir3
+  ```
+
+---
+
+### **15. Crea un fichero llamado “SistemasLinux.txt” (que esté vacío) en el directorio dir11**
+- Comando:  
+  ```
+  touch /tmp/TEMPORAL/dir1/dir11/SistemasLinux.txt
+  ```
+
+---
+
+### **16. Crea un fichero llamado “Fich_Texto.txt” con el texto “Sistemas Operativos” en dir11**
+- Comando:  
+  ```
+  echo "Sistemas Operativos" > /tmp/TEMPORAL/dir1/dir11/Fich_Texto.txt
+  ```
+
+---
+
+### **17. Muestra el contenido del fichero por pantalla**
+- Comando:  
+  ```
+  cat /tmp/TEMPORAL/dir1/dir11/Fich_Texto.txt
+  ```
+
+---
+
+### **18. Elimina el fichero llamado “SistemasLinux.txt”**
+- Comando:  
+  ```
+  rm /tmp/TEMPORAL/dir1/dir11/SistemasLinux.txt
+  ```
