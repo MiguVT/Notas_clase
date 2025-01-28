@@ -567,9 +567,10 @@ Formato: `mkdir [opciones] [directorio/s]`
 ### **3. Crea un directorio denominado SOM (¿Te deja?)**
 - Comando:  
   ```
+  su -
   mkdir /etc/SOM
   ```
-
+Si, porque hemos iniciado como root al usar su -
 ---
 
 ### **4. Cámbiate al directorio /tmp**
