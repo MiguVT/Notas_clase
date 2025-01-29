@@ -690,3 +690,96 @@ Si, porque hemos iniciado como root al usar su -
   ```
   rm /tmp/TEMPORAL/dir1/dir11/SistemasLinux.txt
   ```
+
+---
+
+### **29/01/25**
+
+## **Operaciones Ficheros y Directorios en Linux - IV**
+
+---
+
+### **1. Crea la siguiente estructura de directorios dentro de tu directorio de trabajo personal con 5 comandos como máximo.**
+
+#### **Estructura a crear:**
+```
+multimedia
+├── musica
+├── imagenes
+├── video
+├── presentaciones
+│   ├── personales
+│   ├── otras
+```
+
+#### **Comando para crear la estructura en un solo paso:**
+```bash
+mkdir -p ~/multimedia/{musica,imagenes,video,presentaciones/{personales,otras}}
+```
+![imagen](https://github.com/user-attachments/assets/2ef36a6e-2aa1-4c82-b3b2-0b6f218b8ca8)
+
+---
+
+### **2. Comprueba el resultado con `ls -R`**
+- Comando:  
+  ```bash
+  ls -R ~/multimedia
+  ```
+  ![imagen](https://github.com/user-attachments/assets/3ef21f7b-bb7d-445d-8ba7-70dfd70b34af)
+
+---
+
+### **3. Crea un fichero vacío dentro del directorio música, con nombre `MI_MUSICA.txt`**
+- Comando:  
+  ```bash
+  touch ~/multimedia/musica/MI_MUSICA.txt
+  ```
+  ![imagen](https://github.com/user-attachments/assets/264b13ae-399e-41f2-966e-3e6ec1180fd7)
+
+---
+
+### **4. Utiliza tu editor preferido para abrir el fichero `MI_MUSICA.txt` e introduce tus grupos o los estilos de música que más te gusten. Guarda los cambios y sal.**
+- Con `nano`:  
+  ```bash
+  nano ~/multimedia/musica/MI_MUSICA.txt
+  ```
+- Con `vim`:  
+  ```bash
+  vim ~/multimedia/musica/MI_MUSICA.txt
+  ```
+- Con `echo` (para añadir texto directamente desde la terminal):  
+  ```bash
+  echo "KPop, Japanese Pop" > ~/multimedia/musica/MI_MUSICA.txt
+  ```
+Mi favorito es nano, pero para algo tan simple prefiero usar echo:
+![imagen](https://github.com/user-attachments/assets/a18b157d-ac54-4905-94d5-e2c41ee592a6)
+
+---
+
+### **5. ¿Conoces más formas de editar con comandos Linux? Inclúyelas.**
+- **Usando `cat` (para escribir manualmente el contenido, finalizar con `Ctrl+D`):**  
+  ```bash
+  cat > ~/multimedia/musica/MI_MUSICA.txt
+  ```
+  ![imagen](https://github.com/user-attachments/assets/6ce7b804-24c3-48cf-afd2-f1ea96b3152b)
+
+- **Usando `sed` (para añadir una línea específica de texto):**  
+  ```bash
+  sed -i '1s/^/KPop, Japanese Pop\n/' ~/multimedia/musica/MI_MUSICA.txt
+  ```
+  ![imagen](https://github.com/user-attachments/assets/b35fb69a-e6e6-40ea-8717-a7b586623722)
+
+- **Usando `printf` (para escribir múltiples líneas en el archivo):**  
+  ```bash
+  printf "KPop\nJapanese pop\nNada mas :b este es el ejemplo de printf\n" >> ~/multimedia/musica/MI_MUSICA.txt
+  ```
+  ![imagen](https://github.com/user-attachments/assets/98f20880-a5c9-42d2-ba8e-463246518921)
+
+---
+
+### **6. Muestra en el terminal todo el contenido de `MI_MUSICA.txt`**
+- Comando:  
+  ```bash
+  cat ~/multimedia/musica/MI_MUSICA.txt
+  ```
+  ![imagen](https://github.com/user-attachments/assets/8d92c4c8-10a6-4b2f-ac55-bb850bf0b0f8)
