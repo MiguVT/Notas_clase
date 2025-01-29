@@ -697,8 +697,6 @@ Si, porque hemos iniciado como root al usar su -
 
 ## **Operaciones Ficheros y Directorios en Linux - IV**
 
----
-
 ### **1. Crea la siguiente estructura de directorios dentro de tu directorio de trabajo personal con 5 comandos como máximo.**
 
 #### **Estructura a crear:**
