@@ -781,3 +781,167 @@ Mi favorito es nano, pero para algo tan simple prefiero usar echo:
   cat ~/multimedia/musica/MI_MUSICA.txt
   ```
   ![imagen](https://github.com/user-attachments/assets/8d92c4c8-10a6-4b2f-ac55-bb850bf0b0f8)
+
+---
+
+### **30/01/25**
+
+## **Operaciones Ficheros y Directorios en Linux - V**
+
+### **1. Crea `Princip`, `Datos` y `C` desde el directorio `Origen`**
+- Comando:  
+  ```bash
+  mkdir -p ~/Origen/{Princip,Datos,C}
+  ```
+  ![imagen](https://github.com/user-attachments/assets/213df834-8aaf-4633-b8c2-3ca190be1f8f)
+
+---
+
+### **2. Cambia al directorio `Princip` y crea desde ahí el directorio `Result` con trayectoria relativa**
+- Comandos:  
+  ```bash
+  cd ~/Origen/Princip
+  mkdir ../Result
+  ```
+  ![imagen](https://github.com/user-attachments/assets/a809b2e4-43d7-40e4-bacf-146d3d0333f9)
+
+---
+
+### **3. Utilizando trayectoria absoluta, crea los directorios `Programa` y `Ejercici`**
+- Comando:  
+  ```bash
+  mkdir -p ~/Origen/C/{Programa,Ejercici}
+  ```
+  ![imagen](https://github.com/user-attachments/assets/1909dbac-401b-4a9a-bfc1-0c1c82a20801)
+
+---
+
+### **4. Cambia al directorio `Ejercici` y desde ahí, con trayectoria relativa, crea `Nuevos` y `Revisado`**
+- Comandos:  
+  ```bash
+  cd ~/Origen/C/Ejercici
+  mkdir Nuevos Revisado
+  ls -R ~/Origen
+  ```
+  ![imagen](https://github.com/user-attachments/assets/cb43ac8b-0d40-4096-a628-f978c008b78a)
+
+---
+
+### **5. Visualiza el contenido del directorio `C`**
+- Comando:  
+  ```bash
+  ls -R ~/Origen/C
+  ```
+  ![imagen](https://github.com/user-attachments/assets/e6fa7154-f202-4e31-93fa-c120a515083d)
+
+---
+
+### **6. Borra `Ejercici` (y todo su contenido) utilizando la trayectoria absoluta**
+- Comando:  
+  ```bash
+  rm -r ~/Origen/C/Ejercici
+  ```
+  ![imagen](https://github.com/user-attachments/assets/728101ff-04ab-4267-bdd5-3f1880945c49)
+
+---
+
+### **7. Crea dentro del directorio `Result`, los directorios `c.dat` y `c.bak`**
+- Comando:  
+  ```bash
+  mkdir ~/Origen/Result/{c.dat,c.bak}
+  ```
+  ![imagen](https://github.com/user-attachments/assets/fb89fd30-393a-4935-a008-2697140d1a21)
+
+---
+
+### **8. Crea en tu directorio personal dos directorios nuevos llamados `árbol1` y `árbol2`**
+- Comando:  
+  ```bash
+  mkdir -p ~/árbol1 ~/árbol2
+  ```
+  ![imagen](https://github.com/user-attachments/assets/103ecfaf-b170-4979-bdbc-e9338764a009)
+
+#### **A. Copia en `árbol1` la estructura de directorios de `Origen`**
+- Comando:  
+  ```bash
+  cp -r ~/Origen ~/árbol1/
+  ```
+  ![imagen](https://github.com/user-attachments/assets/49496c20-15f0-47d7-bbfb-faae2a0712ba)
+
+#### **B. Copia en `árbol2` la estructura de directorios de `C`**
+- Comando:  
+  ```bash
+  cp -r ~/Origen/C ~/árbol2/
+  ```
+  ![imagen](https://github.com/user-attachments/assets/b4898332-0c92-4571-b560-c4e353815065)
+
+---
+
+### **9. Borra los directorios `árbol1` paso a paso y `árbol2` con una sola instrucción**
+
+#### **A. Borrar `árbol1` paso a paso**
+- Comandos:  
+  ```bash
+  rm -r ~/árbol1/Origen/Result/c.dat
+  rm -r ~/árbol1/Origen/Result/c.bak
+  rm -r ~/árbol1/Origen/Result
+  rm -r ~/árbol1/Origen/C/Programa
+  rm -r ~/árbol1/Origen/C
+  rm -r ~/árbol1/Origen/Princip
+  rm -r ~/árbol1/Origen/Datos
+  rm -r ~/árbol1/Origen
+  rmdir ~/árbol1
+  ```
+  ![imagen](https://github.com/user-attachments/assets/d57e4550-8c7e-458c-9bdb-43239e409dd8)
+
+#### **B. Borrar `árbol2` con una sola instrucción**
+- Comando:  
+  ```bash
+  rm -r ~/árbol2
+  ```
+  ![imagen](https://github.com/user-attachments/assets/c8a476ad-1e65-4fd1-a0e3-c1dd99515319)
+
+---
+
+### **10. Mueve los directorios `c.dat` y `c.bak` del directorio `Result` al directorio `Datos`**
+- Comando:  
+  ```bash
+  mv ~/Origen/Result/{c.dat,c.bak} ~/Origen/Datos/
+  ```
+  ![imagen](https://github.com/user-attachments/assets/27970c57-d0fc-4d9e-a97d-a11f789d42c3)
+
+---
+
+### **11. Copia el directorio `Programa` al directorio `Result`**
+- Comando:  
+  ```bash
+  cp -r ~/Origen/C/Programa ~/Origen/Result/
+  ```
+  ![imagen](https://github.com/user-attachments/assets/8210af45-c74c-4ac7-b4a8-7963cf3573d1)
+
+---
+
+### **12. Cambia el nombre de `Result` por `Final`**
+- Comando:  
+  ```bash
+  mv ~/Origen/Result ~/Origen/Final
+  ```
+  ![imagen](https://github.com/user-attachments/assets/116fca2e-31b1-4e6e-92dd-08f8ee2be4ae)
+
+---
+
+### **13. Copia la estructura del directorio `C` en `Final`**
+- Comando:  
+  ```bash
+  cp -r ~/Origen/C ~/Origen/Final/
+  ```
+  ![imagen](https://github.com/user-attachments/assets/3519f26d-e80d-49e5-a9dd-efe16f55ddda)
+
+---
+
+### **14. Muestra los permisos de todos los directorios de la estructura**
+- Comando:  
+  ```bash
+  ls -lR ~/Origen
+  ```
+  ![imagen](https://github.com/user-attachments/assets/97c4d335-2a06-46c2-b183-696a6ed93a53)
