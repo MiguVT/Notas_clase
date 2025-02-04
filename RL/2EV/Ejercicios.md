@@ -1,3 +1,11 @@
+📖 **Introducción al Cuaderno (Ejercicios) de Redes** 📖  
+
+Este cuaderno ha sido elaborado como un **libro de estudio estructurado**, con un enfoque claro y técnico. Su objetivo es proporcionar un recurso preciso y bien organizado para el aprendizaje del **direccionamiento IP y redes**.  
+
+El contenido sigue un **estilo formal y técnico**, evitando un tono excesivamente coloquial, para asemejarse más a un **manual de referencia**. Se presentan **explicaciones detalladas**, ejercicios resueltos y cálculos paso a paso, asegurando una comprensión profunda de cada concepto.  
+
+Este documento está diseñado tanto para el **estudio personal** como para servir de **guía en futuras consultas**.
+
 # 13/01/25
 ## Ejercicio 2
 Mi ip: 192.168.31.43
@@ -627,3 +635,135 @@ Los **puertos TCP/UDP** están en el rango **0 - 65535** y se dividen en tres ca
 | **300** | **Bien conocido (0-1023)** | ✅ **Sí** |
 | **45065** | **Registrado (1024-49151)** | ✅ **Sí** |
 | **69830** | **Fuera de rango (máximo permitido 65535)** | ❌ **No** |
+
+## **Ejercicio 3: Análisis de una IP con máscara /27**  
+
+Dada la dirección IP **192.133.14.33/27**, respondemos a las siguientes preguntas.  
+
+---
+
+### **a) ¿Es una IP pública o privada?**  
+
+📌 **Reglas de direcciones privadas:**  
+Las direcciones privadas están en los siguientes rangos:  
+
+- **Clase A:** `10.0.0.0 - 10.255.255.255`  
+- **Clase B:** `172.16.0.0 - 172.31.255.255`  
+- **Clase C:** `192.168.0.0 - 192.168.255.255`  
+
+🔍 **Análisis:**  
+- La IP **192.133.14.33** **NO** está en ninguno de los rangos anteriores.  
+- Por lo tanto, **es una IP pública**.  
+
+✅ **Respuesta:** **IP pública**  
+
+---
+
+### **b) Máscara en notación decimal puntuada**  
+
+📌 **Conversión de `/27` a notación decimal:**  
+
+En binario, una máscara **/27** tiene 27 bits en `1`:  
+```plaintext
+11111111.11111111.11111111.11100000
+```
+En decimal:  
+```plaintext
+255.255.255.224
+```
+
+✅ **Respuesta:** `255.255.255.224`  
+
+---
+
+### **c) Dirección de red**  
+
+📌 **La dirección de red se obtiene haciendo una operación AND entre la IP y la máscara de subred.**  
+
+**Paso 1: Convertir a binario**  
+```plaintext
+IP:      192.133.14.33  ->  11000000.10000101.00001110.00100001
+Máscara: 255.255.255.224 ->  11111111.11111111.11111111.11100000
+```
+
+**Paso 2: Aplicar AND bit a bit**  
+```plaintext
+Red:     192.133.14.32  ->  11000000.10000101.00001110.00100000
+```
+
+✅ **Dirección de red:** `192.133.14.32`  
+
+---
+
+### **d) Dirección de difusión**  
+
+📌 **La dirección de difusión (broadcast) se obtiene poniendo todos los bits de host en `1` dentro del rango de la subred.**  
+
+**Paso 1: Complemento de la máscara**  
+```plaintext
+00000000.00000000.00000000.00011111
+```
+
+**Paso 2: Aplicar OR con la dirección de red**  
+```plaintext
+192.133.14.32  |  0.0.0.31  =  192.133.14.63
+```
+
+✅ **Dirección de difusión:** `192.133.14.63`  
+
+---
+
+### **e) Número máximo de ordenadores en la red**  
+
+📌 **Fórmula para calcular hosts en una subred:**  
+```plaintext
+(2^bits_de_host) - 2
+```
+- `/27` significa que hay **5 bits para los hosts** (`32 - 27 = 5`).  
+- **Número de hosts posibles:**  
+  ```plaintext
+  (2^5) - 2 = 32 - 2 = 30 hosts
+  ```
+
+✅ **Máximo número de ordenadores en la red:** **30**  
+
+---
+
+### **f) ¿Está en la misma red que la máquina `192.133.14.67`?**  
+
+📌 **Paso 1: Encontrar la dirección de red de `192.133.14.67` con máscara `/27`**  
+
+**Conversión a binario**  
+```plaintext
+192.133.14.67  ->  11000000.10000101.00001110.01000011
+```
+
+**Aplicando la máscara `/27` (AND con `255.255.255.224`)**  
+```plaintext
+192.133.14.67  &  255.255.255.224  =  192.133.14.64
+```
+
+📌 **Comparación de direcciones de red**  
+| IP | Dirección de Red |
+|----|-----------------|
+| `192.133.14.33` | `192.133.14.32` |
+| `192.133.14.67` | `192.133.14.64` |
+
+**Diferentes redes.**  
+
+✅ **Respuesta:** **No están en la misma red** porque pertenecen a redes diferentes:  
+- `192.133.14.32/27`  
+- `192.133.14.64/27`  
+
+---
+
+### **Resultados**  
+
+| Pregunta | Respuesta |
+|----------|----------|
+| **a) Pública o privada?** | Pública |
+| **b) Máscara en decimal?** | `255.255.255.224` |
+| **c) Dirección de red?** | `192.133.14.32` |
+| **d) Dirección de difusión?** | `192.133.14.63` |
+| **e) Máximo número de ordenadores?** | `30` |
+| **f) ¿Misma red que `192.133.14.67`?** | **No**, `192.133.14.67` está en `192.133.14.64/27` |
