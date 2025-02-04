@@ -1,4 +1,4 @@
-📖 **Introducción al Cuaderno (Ejercicios) de Redes** 📖  
+### 📖 **Introducción al Cuaderno (Ejercicios) de Redes** 📖  
 
 Este cuaderno ha sido elaborado como un **libro de estudio estructurado**, con un enfoque claro y técnico. Su objetivo es proporcionar un recurso preciso y bien organizado para el aprendizaje del **direccionamiento IP y redes**.  
 
