@@ -530,10 +530,51 @@ Red a la que pertenece `192.169.3.2`:
 Las direcciones `192.168.3.1` y `192.169.3.2` pertenecen a **redes diferentes**, por lo que **no pueden comunicarse directamente**.  
 
 🔧 **Solución:**  
-- Para que puedan comunicarse, **deben estar en la misma red**.  
-- Opciones:  
-  1. **Cambiar la IP de uno de los equipos** para que pertenezca a la misma red (`192.168.2.X` o `192.169.2.X`).  
-  2. **Configurar un router** entre ambas redes para permitir la comunicación.
+1. **Cambiar la IP de uno de los equipos** para que pertenezca a la misma red (`192.168.2.X` o `192.169.2.X`).  
+2. **Cambiar la dirección de red para que ambas IPs pertenezcan a la misma subred.**  
+
+---
+
+### **Solución alternativa: Cambiar la dirección de red**  
+
+Queremos encontrar la **máscara de subred más grande posible** que incluya **ambas direcciones IP (`192.168.3.1` y `192.169.3.2`)**.  
+
+#### **Paso 1: Convertir las direcciones IP a binario**  
+
+IP `192.168.3.1`:  
+```plaintext
+11000000.10101000.00000011.00000001
+```
+IP `192.169.3.2`:  
+```plaintext
+11000000.10101001.00000011.00000010
+```
+Observamos que los **primeros 23 bits no son iguales**.  
+
+#### **Paso 2: Buscar la máscara adecuada**  
+
+- Si usamos una máscara **/22** (`255.255.252.0`), la dirección de red sería:  
+  ```plaintext
+  192.168.0.0/22 (cubre de 192.168.0.0 a 192.168.3.255)
+  ```
+  → **No cubre la IP `192.169.3.2`**.
+
+- Si usamos una máscara **/21** (`255.255.248.0`), la dirección de red sería:  
+  ```plaintext
+  192.168.0.0/21 (cubre de 192.168.0.0 a 192.168.7.255)
+  ```
+  → **No cubre la IP `192.169.3.2`**.
+
+- Si usamos una máscara **/20** (`255.255.240.0`), la dirección de red sería:  
+  ```plaintext
+  192.160.0.0/20 (cubre de 192.160.0.0 a 192.175.255.255)
+  ```
+  → **Ahora ambas direcciones están en la misma red**.
+
+✅ **Solución final:**  
+- **Dirección de red:** `192.160.0.0/20`  
+- **Máscara de subred:** `255.255.240.0`  
+- **Nueva puerta de enlace recomendada:** `192.160.0.1`  
 
 ---
 
@@ -548,7 +589,8 @@ Para navegar en Internet, la **puerta de enlace** debe estar en la misma red.
 La IP del PC y la **puerta de enlace no están en la misma red**, por lo que **no podrá salir a Internet**.  
 
 🔧 **Solución:**  
-- Cambiar la puerta de enlace a **`192.168.3.254`** (última IP válida en la red `192.168.2.0/23`).
+- Cambiar la puerta de enlace a **`192.168.3.254`** (última IP válida en la red `192.168.2.0/23`).  
+- Si se aplica la solución alternativa con **máscara /20**, la puerta de enlace debería cambiarse a `192.160.0.1`.
 
 ---
 
@@ -566,25 +608,22 @@ Podrá navegar **siempre que el DNS secundario (`4.4.4.4`) funcione**. Si ambos 
 
 ## **Ejercicio 2: Análisis de puertos en una trama de red**  
 
-Los puertos TCP/UDP en redes informáticas pueden tener valores entre **0 y 65535**.  
+Los **puertos TCP/UDP** están en el rango **0 - 65535** y se dividen en tres categorías:  
 
-Se analizan los siguientes valores de puertos destino en una trama generada por un cliente:  
+1. **Puertos Bien Conocidos (Well-Known Ports) [0 - 1023]**  
+   - Reservados para servicios estándar como **HTTP (`80`)**, **HTTPS (`443`)**, **SSH (`22`)**, etc.  
 
-### **a) Puerto `100`** ✅  
-- **Válido**.  
-- Se encuentra en el **rango de puertos bien conocidos (0-1023)**, reservados para servicios estándar, pero aún puede usarse como destino.
+2. **Puertos Registrados (Registered Ports) [1024 - 49151]**  
+   - Asignados a aplicaciones específicas por **IANA**, como **MySQL (`3306`)**, **Minecraft (`25565`)**, etc.  
 
-### **b) Puerto `300`** ✅  
-- **Válido**.  
-- Pertenece al rango de **puertos registrados (1024-49151)**, que pueden ser usados libremente.
+3. **Puertos Dinámicos o Efímeros (Dynamic or Ephemeral Ports) [49152 - 65535]**  
+   - Asignados **temporalmente** por el sistema a clientes cuando establecen conexiones de salida (ejemplo: al navegar en Internet).
 
-### **c) Puerto `45065`** ✅  
-- **Válido**.  
-- Es un **puerto efímero** (49152-65535), comúnmente asignado dinámicamente a aplicaciones cliente.
+✅ **Clasificación en los puertos:**  
 
-### **d) Puerto `69830`** ❌  
-- **No válido**.  
-- El rango permitido de puertos es **0-65535**, por lo que `69830` está fuera de los límites.
-
-✅ **Conclusión:**  
-Los valores `100`, `300` y `45065` son **válidos**, mientras que `69830` **no lo es** porque excede el rango permitido.
+| **Puerto** | **Clasificación** | **Es válido?** |
+|------------|------------------|---------------|
+| **100** | **Bien conocido (0-1023)** | ✅ **Sí** |
+| **300** | **Bien conocido (0-1023)** | ✅ **Sí** |
+| **45065** | **Registrado (1024-49151)** | ✅ **Sí** |
+| **69830** | **Fuera de rango (máximo permitido 65535)** | ❌ **No** |
