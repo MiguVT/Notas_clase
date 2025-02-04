@@ -1,6 +1,10 @@
 # 📘 **Resumen Completo para el Examen: Direccionamiento IPv4 & IPv6**
 
-Este resumen fue hecho por Yara, no solo para mi, mi objetivo con este resumen es que la gente que en clase no haya entendido algo pueda repasarlo y entenderlo. 
+Este resumen ha sido elaborado como un libro de estudio estructurado, con un enfoque claro y técnico. Su objetivo es proporcionar un recurso preciso y bien organizado para el aprendizaje del direccionamiento IP y redes.
+
+El contenido sigue un estilo formal y técnico, evitando un tono excesivamente coloquial, para asemejarse más a un manual de referencia. Se presentan explicaciones detalladas, ejercicios resueltos y cálculos paso a paso, asegurando una comprensión profunda de cada concepto.
+
+Este documento está diseñado tanto para mi estudio personal como para servir de guía en futuras consultas.
 
 ## **Índice de Contenidos**
 1. [Dirección IPv4](#1-dirección-ipv4)
