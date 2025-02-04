@@ -1049,6 +1049,7 @@ Mi favorito es nano, pero para algo tan simple prefiero usar echo:
   ls *Exámenes*
   ```  
   **Explicación**: Se buscan archivos con `"Exámenes"` en cualquier parte del nombre. Al ser sensible a mayusculas y tildes, no encontrará ningun resultado.
+  
   ![imagen](https://github.com/user-attachments/assets/396ba431-1675-4aee-b1b2-10742e060703)
 
 ---
@@ -1140,6 +1141,7 @@ Mi favorito es nano, pero para algo tan simple prefiero usar echo:
   mv *.* ~/conExtension/
   ```  
   **Explicación**: Se mueven **todos los archivos que tienen un punto (`.`) en su nombre**, es decir, archivos con extensión (`.txt`, `.pdf`, `.jpeg`...). Como no existe la carpeta, la creamos con `mkdir`.
+  
   ![imagen](https://github.com/user-attachments/assets/b2190374-6c19-421d-b073-ebb2b2388915)
 
 ---
