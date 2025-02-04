@@ -483,3 +483,99 @@ Los primeros **16 bits** son comunes (`192.168`), por lo que usamos una máscara
 - **No están en la misma red**, ya que:  
   - Red 1: **20.0.0.0/6**  
   - Red 2: **28.0.0.0/6**
+
+### **04/02/25**  
+
+## **Ejercicio 1: Análisis de conectividad y comunicación en una red**  
+
+### **a) Determinar si dos PCs están en la misma red**  
+
+**Datos proporcionados:**  
+- **PC 1:** `172.16.4.100/21`  
+- **PC 2:** `172.16.6.200/21`  
+- **Máscara de subred:** `255.255.248.0`  
+
+#### **Cálculo en binario:**  
+```plaintext
+IP:       172.16.4.100    →  10101100.00010000.00000100.01100100
+Máscara:  255.255.248.0   →  11111111.11111111.11111000.00000000
+Red:      172.16.0.0      →  10101100.00010000.00000000.00000000
+```
+```plaintext
+IP:       172.16.6.200    →  10101100.00010000.00000110.11001000
+Máscara:  255.255.248.0   →  11111111.11111111.11111000.00000000
+Red:      172.16.0.0      →  10101100.00010000.00000000.00000000
+```
+**Dirección de Red:** 172.16.0.0  
+
+✅ **Conclusión:** Ambos dispositivos **están en la misma red** (`172.16.0.0/21`), ya que tienen la misma dirección de red.
+
+---
+
+### **b) Determinar el rango de direcciones de la red**  
+
+- **Dirección de red:** `172.16.0.0`  
+- **Dirección de broadcast:** `172.16.7.255`  
+- **Rango de IPs válidas:**  
+  ```plaintext
+  Primera IP válida: 172.16.0.1
+  Última IP válida: 172.16.7.254
+  ```
+
+✅ **Conclusión:** Todos los dispositivos dentro de **172.16.0.1 - 172.16.7.254** pueden comunicarse sin un router.
+
+---
+
+### **c) Determinar el número de hosts en esta subred**  
+
+Se usa la fórmula:  
+```plaintext
+Número de hosts = 2^(32 - prefijo) - 2
+```
+Para `/21`:  
+```plaintext
+2^(32 - 21) - 2 = 2^11 - 2 = 2046 hosts
+```
+✅ **Conclusión:** La red permite **2046 dispositivos** conectados.
+
+---
+
+## **Ejercicio 2: Análisis de una red IPv6**  
+
+**Dirección IPv6 proporcionada:**  
+```plaintext
+2001:db8:abcd:1234::1/64
+```
+
+### **a) Determinar cuántas direcciones hay en una subred `/64`**  
+
+En IPv6, una **/64** significa que los **primeros 64 bits** representan la red, y los **últimos 64 bits** se usan para **hosts**.  
+
+```plaintext
+Número total de direcciones en /64 = 2^(128 - 64) = 2^64 ≈ 18,446,744,073,709,551,616
+```
+✅ **Conclusión:** Una subred IPv6 `/64` puede tener **18.4 quintillones** de direcciones.  
+
+---
+
+### **b) Determinar la dirección de red y dirección de broadcast**  
+
+- **Dirección de red:**  
+  ```plaintext
+  2001:db8:abcd:1234::/64
+  ```
+- **Dirección de broadcast en IPv6:**  
+  IPv6 **no usa dirección de broadcast**. En su lugar, se usa **Multicast**.  
+
+✅ **Conclusión:** En IPv6, el **equivalente a broadcast** es la dirección **`ff02::1`**, que envía paquetes a **todos los hosts de la red local**.  
+
+---
+
+### **c) Identificar el rango de direcciones de la red**  
+
+Dado que **los primeros 64 bits son fijos**, el rango de direcciones en **`2001:db8:abcd:1234::/64`** es:  
+```plaintext
+Primera IP válida: 2001:db8:abcd:1234::1
+Última IP válida: 2001:db8:abcd:1234:ffff:ffff:ffff:ffff
+```
+✅ **Conclusión:** Todas las direcciones dentro de este rango pertenecen a la misma subred.  
