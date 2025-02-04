@@ -945,3 +945,209 @@ Mi favorito es nano, pero para algo tan simple prefiero usar echo:
   ls -lR ~/Origen
   ```
   ![imagen](https://github.com/user-attachments/assets/97c4d335-2a06-46c2-b183-696a6ed93a53)
+
+### **04/02/25**
+
+## EJERCICIO DE METACARACTERES
+
+### * ANTES DE EMPEZAR: DESCARGAR ARCHIVO
+- Para descargar el archivo he abierto un server http en el host donde esta el archivo deseado (`Metacaracteres.zip`)
+  ![imagen](https://github.com/user-attachments/assets/0098e956-d27a-4d8c-9265-bd4610431f58)
+- Lo he descargando usando en linux el comando wget (Haciendo un `GET` a `/Metacaracteres.zip`), pero antes he comprabado con ping que la vm tenga acceso al servidor del host, despues lo movi a `~/Metacaracteres` y lo descomprimí en este directorio
+  ![imagen](https://github.com/user-attachments/assets/ce59103a-3e53-4db4-87fc-1bdba3d9a06a)
+  
+---
+
+### **1. Mostrar ficheros cuyos nombres comiencen por "fichero" y tengan un solo carácter adicional**  
+- Comando:  
+  ```bash
+  ls fichero?
+  ```  
+  **Explicación**: Se listan los archivos que comienzan con `"fichero"` y tienen **un carácter más** después.
+  ![imagen](https://github.com/user-attachments/assets/93fb12d6-04a5-42fd-b847-ab97f8850f62)
+
+
+
+---
+
+### **2. Mostrar ficheros cuyos nombres comiencen por "fichero" y tengan exactamente dos caracteres adicionales**  
+- Comando:  
+  ```bash
+  ls fichero??
+  ```  
+  **Explicación**: Se listan archivos con exactamente **dos caracteres** después de `"fichero"`.
+  ![imagen](https://github.com/user-attachments/assets/a48e38e8-6f98-4ce4-8301-4f80574c0fbe)
+
+
+---
+
+### **3. Mostrar ficheros que empiecen por "ficheroPDF", seguido de un carácter cualquiera y terminen en ".pdf"**  
+- Comando:  
+  ```bash
+  ls ficheroPDF?.pdf
+  ```  
+  **Explicación**: Se buscan archivos PDF con nombres como `"ficheroPDF1.pdf"`, `"ficheroPDFA.pdf"`, etc.
+  ![imagen](https://github.com/user-attachments/assets/7fc07dcf-d7d5-4c11-b8af-090edf49e1f6)
+
+
+---
+
+### **4. Mostrar ficheros cuyos nombres empiecen por "archivo" y tengan exactamente 11 caracteres**  
+- Comando:  
+  ```bash
+  ls archivo????
+  ```  
+  **Explicación**: Se muestran archivos cuyo nombre tenga **4 caracteres más** después de `"archivo"`,.
+  ![imagen](https://github.com/user-attachments/assets/5cd0a5b7-47a4-4782-a319-48ca28b04875)
+
+---
+
+### **5. Mostrar ficheros cuyos nombres tengan exactamente 15 caracteres**  
+- Comando:  
+  ```bash
+  ls ???????????????
+  ```  
+  **Explicación**: Se filtran archivos con **15 caracteres en total**, sin importar su nombre.
+  ![imagen](https://github.com/user-attachments/assets/14db11cb-f3bb-4796-bfd9-3fe44a249769)
+
+---
+
+### **6. Mostrar ficheros cuyos nombres comiencen por "archivo"**  
+- Comando:  
+  ```bash
+  ls archivo*
+  ```  
+  **Explicación**: Se listan **todos los archivos** que comiencen por `"archivo"`, sin importar qué caracteres sigan.
+  ![imagen](https://github.com/user-attachments/assets/404cfd41-db08-49c7-a8b4-677b7f7ce9af)
+
+---
+
+### **7. Mostrar ficheros cuya extensión sea ".jpeg"**  
+- Comando:  
+  ```bash
+  ls *.jpeg
+  ```  
+  **Explicación**: Se listan todos los archivos que terminan en `".jpeg"`.
+  ![imagen](https://github.com/user-attachments/assets/777f6f7d-5b96-4d8f-8945-29a9fe217a0b)
+
+---
+
+### **8. Mostrar todos los ficheros cuyos nombres empiecen por "imagen", después tengan una letra y terminen en ".jpeg"**  
+- Comando:  
+  ```bash
+  ls imagen[A-Z].jpeg
+  ```  
+  **Explicación**: Se listan imágenes como `"imagenA.jpeg"`, `"imagenB.jpeg"`, etc. (Tiene que ser mayuscula)
+  ![imagen](https://github.com/user-attachments/assets/6d71baf7-cb98-4fbb-9887-acbcc2b31ce9)
+  
+
+---
+
+### **9. Mostrar ficheros que contengan la cadena "Exámenes" en el nombre**  
+- Comando:  
+  ```bash
+  ls *Exámenes*
+  ```  
+  **Explicación**: Se buscan archivos con `"Exámenes"` en cualquier parte del nombre. Al ser sensible a mayusculas y tildes, no encontrará ningun resultado.
+  ![imagen](https://github.com/user-attachments/assets/396ba431-1675-4aee-b1b2-10742e060703)
+
+---
+
+### **10. Mostrar todos los ficheros cuyos nombres comiencen por "fichero" y estén seguidos por un número del 4 al 9**  
+- Comando:  
+  ```bash
+  ls fichero[4-9]*
+  ```  
+  **Explicación**: Se listan archivos como `"fichero4"`, `"fichero5"`, hasta `"fichero9"`.
+  ![imagen](https://github.com/user-attachments/assets/3ce84db2-1f29-479f-80fa-fef900ab28ab)
+
+---
+
+## **Parte II - Organización de Archivos con Metacaracteres**
+
+### **11. Crear una carpeta llamada "carpetaTXT" en el directorio personal**  
+- Comando:  
+  ```bash
+  mkdir ~/carpetaTXT
+  ```
+  ![imagen](https://github.com/user-attachments/assets/4d76d3a0-9a9e-4569-970d-d5bdffb7b293)
+
+---
+
+### **12. Crear una carpeta llamada "carpetaPDF"**  
+- Comando:  
+  ```bash
+  mkdir ~/carpetaPDF
+  ```
+  ![imagen](https://github.com/user-attachments/assets/8db034ed-bfb4-4320-8140-ab3ec04a0c10)
+
+---
+
+### **13. Crear una carpeta llamada "carpetaJPEG"**  
+- Comando:  
+  ```bash
+  mkdir ~/carpetaJPEG
+  ```
+  ![imagen](https://github.com/user-attachments/assets/c594b935-dd0c-4dcd-9fe5-2228b8b69684)
+
+
+---
+
+### **14. Mover todos los archivos ".txt" a la carpeta "carpetaTXT"**  
+- Comando:  
+  ```bash
+  mv *.txt ~/carpetaTXT/
+  ```  
+  **Explicación**: Se trasladan **todos los archivos de texto** a la carpeta `"carpetaTXT"`.
+  ![imagen](https://github.com/user-attachments/assets/39c00c29-3276-46c6-823d-3d7fc6db12c4)
+
+---
+
+### **15. Mover todos los archivos ".pdf" a la carpeta "carpetaPDF"**  
+- Comando:  
+  ```bash
+  mv *.pdf ~/carpetaPDF/
+  ```  
+  **Explicación**: Se trasladan **todos los archivos PDF** a `"carpetaPDF"`.
+  ![imagen](https://github.com/user-attachments/assets/00f98a90-9260-4cdb-a5ac-c75b2a78b94f)
+
+---
+
+### **16. Mover todos los archivos ".jpeg" a la carpeta "carpetaJPEG"**  
+- Comando:  
+  ```bash
+  mv *.jpeg ~/carpetaJPEG/
+  ```  
+  **Explicación**: Se trasladan **todas las imágenes JPEG** a `"carpetaJPEG"`.
+  ![imagen](https://github.com/user-attachments/assets/b895d221-1c86-464b-9ceb-a6888f1b6e5e)
+
+---
+
+### **17. Mover todos los archivos que comiencen por "JAVIER" a una carpeta "personal_JAVIER"**  
+- Comando:  
+  ```bash
+  mv JAVIER* ~/personal_JAVIER/
+  ```  
+  **Explicación**: Se trasladan archivos como `"JAVIER1"`, `"JAVIER2"`, etc. Como no existe la carpeta, la creamos con `mkdir`.
+  ![imagen](https://github.com/user-attachments/assets/4c5d97a0-dd4e-4900-ba00-d915a4cc7b87)
+  ![imagen](https://github.com/user-attachments/assets/375b78b4-f496-4559-85d2-3526e1a589a7)
+
+---
+
+### **18. Mover todos los ficheros que tengan una extensión a la carpeta "conExtension"**  
+- Comando:  
+  ```bash
+  mv *.* ~/conExtension/
+  ```  
+  **Explicación**: Se mueven **todos los archivos que tienen un punto (`.`) en su nombre**, es decir, archivos con extensión (`.txt`, `.pdf`, `.jpeg`...). Como no existe la carpeta, la creamos con `mkdir`.
+  ![imagen](https://github.com/user-attachments/assets/b2190374-6c19-421d-b073-ebb2b2388915)
+
+---
+
+### **19. Mostrar los archivos que quedaron en la carpeta "METACARACTERES"**  
+- Comando:  
+  ```bash
+  ls ~/METACARACTERES
+  ```  
+  **Explicación**: Se listan los archivos que **no fueron movidos a otras carpetas**. Como es sensible a mayusculas, no lo detectará, para ello he corregido el comando.
+  ![imagen](https://github.com/user-attachments/assets/2b9abed0-ab27-460d-815f-26d8fb98f620)
