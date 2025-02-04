@@ -484,98 +484,107 @@ Los primeros **16 bits** son comunes (`192.168`), por lo que usamos una máscara
   - Red 1: **20.0.0.0/6**  
   - Red 2: **28.0.0.0/6**
 
+---
+
 ### **04/02/25**  
 
-## **Ejercicio 1: Análisis de conectividad y comunicación en una red**  
+## **Ejercicio 1: Análisis de configuración de una red**  
 
-### **a) Determinar si dos PCs están en la misma red**  
+Un cliente tiene la siguiente configuración de red:  
 
-**Datos proporcionados:**  
-- **PC 1:** `172.16.4.100/21`  
-- **PC 2:** `172.16.6.200/21`  
-- **Máscara de subred:** `255.255.248.0`  
-
-#### **Cálculo en binario:**  
-```plaintext
-IP:       172.16.4.100    →  10101100.00010000.00000100.01100100
-Máscara:  255.255.248.0   →  11111111.11111111.11111000.00000000
-Red:      172.16.0.0      →  10101100.00010000.00000000.00000000
-```
-```plaintext
-IP:       172.16.6.200    →  10101100.00010000.00000110.11001000
-Máscara:  255.255.248.0   →  11111111.11111111.11111000.00000000
-Red:      172.16.0.0      →  10101100.00010000.00000000.00000000
-```
-**Dirección de Red:** 172.16.0.0  
-
-✅ **Conclusión:** Ambos dispositivos **están en la misma red** (`172.16.0.0/21`), ya que tienen la misma dirección de red.
+- **Dirección IP:** `192.168.3.1`  
+- **Máscara de subred:** `255.255.254.0`  
+- **Puerta de Enlace:** `192.168.1.1`  
+- **DNS Primario:** `8.8.8.8`  
+- **DNS Secundario:** `4.4.4.4`  
 
 ---
 
-### **b) Determinar el rango de direcciones de la red**  
+### **a) ¿Se podrá comunicar con un PC con IP `192.169.3.2` y la misma máscara de subred?**  
 
-- **Dirección de red:** `172.16.0.0`  
-- **Dirección de broadcast:** `172.16.7.255`  
-- **Rango de IPs válidas:**  
-  ```plaintext
-  Primera IP válida: 172.16.0.1
-  Última IP válida: 172.16.7.254
-  ```
+#### **Paso 1: Identificar la red de la IP `192.168.3.1`**  
+Máscara en binario:  
+```plaintext
+255.255.254.0 → 11111111.11111111.11111110.00000000
+```
+Red a la que pertenece `192.168.3.1`:  
+```plaintext
+192.168.2.0/23
+```
+Rango de direcciones válidas:  
+```plaintext
+192.168.2.1 - 192.168.3.254
+```
 
-✅ **Conclusión:** Todos los dispositivos dentro de **172.16.0.1 - 172.16.7.254** pueden comunicarse sin un router.
+#### **Paso 2: Identificar la red de la IP `192.169.3.2`**  
+Máscara en binario:  
+```plaintext
+255.255.254.0 → 11111111.11111111.11111110.00000000
+```
+Red a la que pertenece `192.169.3.2`:  
+```plaintext
+192.169.2.0/23
+```
+
+✅ **Conclusión:**  
+Las direcciones `192.168.3.1` y `192.169.3.2` pertenecen a **redes diferentes**, por lo que **no pueden comunicarse directamente**.  
+
+🔧 **Solución:**  
+- Para que puedan comunicarse, **deben estar en la misma red**.  
+- Opciones:  
+  1. **Cambiar la IP de uno de los equipos** para que pertenezca a la misma red (`192.168.2.X` o `192.169.2.X`).  
+  2. **Configurar un router** entre ambas redes para permitir la comunicación.
 
 ---
 
-### **c) Determinar el número de hosts en esta subred**  
+### **b) ¿Podrá navegar por Internet normalmente?**  
 
-Se usa la fórmula:  
-```plaintext
-Número de hosts = 2^(32 - prefijo) - 2
-```
-Para `/21`:  
-```plaintext
-2^(32 - 21) - 2 = 2^11 - 2 = 2046 hosts
-```
-✅ **Conclusión:** La red permite **2046 dispositivos** conectados.
+Para navegar en Internet, la **puerta de enlace** debe estar en la misma red.  
 
----
+- **IP:** `192.168.3.1` pertenece a la red **`192.168.2.0/23`**.  
+- **Puerta de enlace:** `192.168.1.1` pertenece a la red **`192.168.0.0/23`**.  
 
-## **Ejercicio 2: Análisis de una red IPv6**  
+✅ **Conclusión:**  
+La IP del PC y la **puerta de enlace no están en la misma red**, por lo que **no podrá salir a Internet**.  
 
-**Dirección IPv6 proporcionada:**  
-```plaintext
-2001:db8:abcd:1234::1/64
-```
-
-### **a) Determinar cuántas direcciones hay en una subred `/64`**  
-
-En IPv6, una **/64** significa que los **primeros 64 bits** representan la red, y los **últimos 64 bits** se usan para **hosts**.  
-
-```plaintext
-Número total de direcciones en /64 = 2^(128 - 64) = 2^64 ≈ 18,446,744,073,709,551,616
-```
-✅ **Conclusión:** Una subred IPv6 `/64` puede tener **18.4 quintillones** de direcciones.  
+🔧 **Solución:**  
+- Cambiar la puerta de enlace a **`192.168.3.254`** (última IP válida en la red `192.168.2.0/23`).
 
 ---
 
-### **b) Determinar la dirección de red y dirección de broadcast**  
+### **c) ¿Podrá navegar si el DNS primario `8.8.8.8` está apagado?**  
 
-- **Dirección de red:**  
-  ```plaintext
-  2001:db8:abcd:1234::/64
-  ```
-- **Dirección de broadcast en IPv6:**  
-  IPv6 **no usa dirección de broadcast**. En su lugar, se usa **Multicast**.  
+Los **servidores DNS** convierten nombres de dominio en direcciones IP.  
 
-✅ **Conclusión:** En IPv6, el **equivalente a broadcast** es la dirección **`ff02::1`**, que envía paquetes a **todos los hosts de la red local**.  
+- Si el **DNS primario (`8.8.8.8`)** está apagado, el sistema usará el **DNS secundario (`4.4.4.4`)**.  
+- Si **ambos están caídos**, no podrá resolver nombres de dominio, pero **sí podrá acceder a Internet si usa direcciones IP directamente**.  
+
+✅ **Conclusión:**  
+Podrá navegar **siempre que el DNS secundario (`4.4.4.4`) funcione**. Si ambos fallan, solo podrá acceder a sitios mediante sus direcciones IP.
 
 ---
 
-### **c) Identificar el rango de direcciones de la red**  
+## **Ejercicio 2: Análisis de puertos en una trama de red**  
 
-Dado que **los primeros 64 bits son fijos**, el rango de direcciones en **`2001:db8:abcd:1234::/64`** es:  
-```plaintext
-Primera IP válida: 2001:db8:abcd:1234::1
-Última IP válida: 2001:db8:abcd:1234:ffff:ffff:ffff:ffff
-```
-✅ **Conclusión:** Todas las direcciones dentro de este rango pertenecen a la misma subred.  
+Los puertos TCP/UDP en redes informáticas pueden tener valores entre **0 y 65535**.  
+
+Se analizan los siguientes valores de puertos destino en una trama generada por un cliente:  
+
+### **a) Puerto `100`** ✅  
+- **Válido**.  
+- Se encuentra en el **rango de puertos bien conocidos (0-1023)**, reservados para servicios estándar, pero aún puede usarse como destino.
+
+### **b) Puerto `300`** ✅  
+- **Válido**.  
+- Pertenece al rango de **puertos registrados (1024-49151)**, que pueden ser usados libremente.
+
+### **c) Puerto `45065`** ✅  
+- **Válido**.  
+- Es un **puerto efímero** (49152-65535), comúnmente asignado dinámicamente a aplicaciones cliente.
+
+### **d) Puerto `69830`** ❌  
+- **No válido**.  
+- El rango permitido de puertos es **0-65535**, por lo que `69830` está fuera de los límites.
+
+✅ **Conclusión:**  
+Los valores `100`, `300` y `45065` son **válidos**, mientras que `69830` **no lo es** porque excede el rango permitido.
