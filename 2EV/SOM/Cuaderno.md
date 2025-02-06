@@ -1035,9 +1035,9 @@ Mi favorito es nano, pero para algo tan simple prefiero usar echo:
 ### **8. Mostrar todos los ficheros cuyos nombres empiecen por "imagen", después tengan una letra y terminen en ".jpeg"**  
 - Comando:  
   ```bash
-  ls imagen[A-Z].jpeg
+  ls imagen[A-Za-z].jpeg
   ```  
-  **Explicación**: Se listan imágenes como `"imagenA.jpeg"`, `"imagenB.jpeg"`, etc. (Tiene que ser mayuscula)
+  **Explicación**: Se listan imágenes como `"imagenA.jpeg"`, `"imagenB.jpeg"`, etc. (Tiene que ser mayuscula o `[A-Za-z]`)
   ![imagen](https://github.com/user-attachments/assets/6d71baf7-cb98-4fbb-9887-acbcc2b31ce9)
   
 
