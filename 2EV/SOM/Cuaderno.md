@@ -1153,3 +1153,65 @@ Mi favorito es nano, pero para algo tan simple prefiero usar echo:
   ```  
   **Explicación**: Se listan los archivos que **no fueron movidos a otras carpetas**. Como es sensible a mayusculas, no lo detectará, para ello he corregido el comando.
   ![imagen](https://github.com/user-attachments/assets/2b9abed0-ab27-460d-815f-26d8fb98f620)
+
+---
+
+### 06/02/25
+
+## **Ejercicios II - Metacaracteres**  
+
+---
+
+### **Actividad 1: Completar la tabla sobre metacaracteres**  
+
+| **Expresión** | **Referencia a ficheros y directorios que...** |
+|--------------|--------------------------------------|
+| `*[ab]*` | Contengan la letra `a` o `b` en cualquier parte del nombre. |
+| `texto1[1-4]` | Empiecen con `texto1` y el siguiente carácter sea un número entre `1` y `4`. |
+| `le[ae]me` | Empiecen con `le`, seguido de `a` o `e`, y terminen en `me`. |
+| `[!0-9]*` | No empiecen con un número (`0-9`). |
+
+---
+
+### **Actividad 2: Lista todos los archivos del directorio `/etc` que empiecen por `t` en orden inverso**  
+
+- **Comando:**  
+  ```bash
+  ls -r /etc/t*
+  ```
+
+---
+
+### **Actividad 3: Lista todos los archivos del directorio `/dev` que empiecen por `tty` y tengan exactamente 5 caracteres**  
+
+- **Comando:**  
+  ```bash
+  ls /dev/tty??
+  ```
+
+---
+
+### **Actividad 4: Lista todos los archivos del directorio `/dev` que empiecen por `tty` y terminen en `1`, `2`, `3` o `4`**  
+
+- **Comando:**  
+  ```bash
+  ls /dev/tty*[1-4]
+  ```
+
+---
+
+### **Actividad 5: Lista todos los archivos del directorio `/dev` que empiecen por `t` y terminen en `C1`**  
+
+- **Comando:**  
+  ```bash
+  ls /dev/t*C1
+  ```
+
+---
+
+### **Actividad 6: Lista todos los archivos del directorio `/etc` que no empiecen por `t`**  
+
+- **Comando:**  
+  ```bash
+  ls /etc/[^t]*
+  ```
