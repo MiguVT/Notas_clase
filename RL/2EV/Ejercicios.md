@@ -767,3 +767,58 @@ Red:     192.133.14.32  ->  11000000.10000101.00001110.00100000
 | **d) Dirección de difusión?** | `192.133.14.63` |
 | **e) Máximo número de ordenadores?** | `30` |
 | **f) ¿Misma red que `192.133.14.67`?** | **No**, `192.133.14.67` está en `192.133.14.64/27` |
+
+
+### **06/02/25**  
+
+## **Ejercicio 1: Direccionamiento IP en un escenario de red**  
+
+Dado el esquema de red, se han configurado **tres redes de clase C** dentro del rango `192.168.0.0 - 192.168.255.255`, utilizando la **máscara por defecto `255.255.255.0 (/24)`**.  
+
+---
+
+### **a) Direcciones de red, broadcast y rango de direcciones**  
+
+Cada subred con máscara `/24` tiene:  
+- **Dirección de red**: `XXX.XXX.XXX.0`  
+- **Dirección de broadcast**: `XXX.XXX.XXX.255`  
+- **Rango de direcciones utilizables**: `XXX.XXX.XXX.1 - XXX.XXX.XXX.254`  
+
+✅ **Asignación de subredes**  
+
+| **Subred** | **Dirección de Red** | **Dirección de Broadcast** | **Rango de IPs** |
+|-----------|----------------|------------------|-----------------------|
+| **Red 1** | `192.168.1.0` | `192.168.1.255` | `192.168.1.1 - 192.168.1.254` |
+| **Red 2** | `192.168.2.0` | `192.168.2.255` | `192.168.2.1 - 192.168.2.254` |
+| **Red 3** | `192.168.3.0` | `192.168.3.255` | `192.168.3.1 - 192.168.3.254` |
+
+---
+
+### **b) Direcciones IP de cada máquina y del router**  
+
+📌 **Suposición**:  
+- Cada red tiene un **switch** y se conectan a un **router** que permite la comunicación entre ellas.  
+- Asignamos la primera IP disponible (`.1`) al **router** de cada red.  
+
+✅ **Asignación de direcciones IP**  
+
+| **Dispositivo** | **IP Asignada** | **Máscara (CIDR)** |
+|--------------|-------------|--------------|
+| **Router - Red 1** | `192.168.1.1` | `/24` |
+| **PC1** | `192.168.1.2` | `/24` |
+| **PC2** | `192.168.1.3` | `/24` |
+| **PC3** | `192.168.1.4` | `/24` |
+| **PC4** | `192.168.1.5` | `/24` |
+| **Router - Red 2** | `192.168.2.1` | `/24` |
+| **PC5** | `192.168.2.2` | `/24` |
+| **PC6** | `192.168.2.3` | `/24` |
+| **PC7** | `192.168.2.4` | `/24` |
+| **PC8** | `192.168.2.5` | `/24` |
+| **Router - Red 3** | `192.168.3.1` | `/24` |
+| **PC9** | `192.168.3.2` | `/24` |
+| **PC10** | `192.168.3.3` | `/24` |
+| **PC11** | `192.168.3.4` | `/24` |
+| **PC12** | `192.168.3.5` | `/24` |
+
+📌 **Nota:**  
+Cada PC tiene asignada una IP dentro del rango **válido** de su subred y la puerta de enlace para cada subred es la dirección del **router** correspondiente (`.1`).  
