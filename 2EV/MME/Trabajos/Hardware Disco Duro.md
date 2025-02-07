@@ -30,7 +30,8 @@ Conocer las conexiones y características de un disco duro.
    - **Comprobación de errores:** Analiza el disco en busca de errores.
    - **Optimizar y desfragmentar unidad:** Mejora el rendimiento del disco.
 
-     ![imagen sacada de captura de otro PC para mayor claridad](https://github.com/user-attachments/assets/2f85ca20-30a2-48e7-a10e-950e7a13af12) ### Imagen sacada en otro PC para mayor claridad, ya que en todos es lo mismo.
+     ![imagen sacada de captura de otro PC para mayor claridad](https://github.com/user-attachments/assets/2f85ca20-30a2-48e7-a10e-950e7a13af12)
+     ###### Imagen sacada en otro PC para mayor claridad, ya que en todos es lo mismo.
 
 
 ### 2. Análisis del Disco Duro
