@@ -194,10 +194,6 @@ Hosts posibles = 2^6 - 2 = 62
 
 ---
 
-Aquí tienes un **apartado extra** con **preguntas tipo examen** 📘🎯, diseñadas para que puedas **practicar y comprobar tu conocimiento** antes de la prueba. 🔥
-
----
-
 # 📌 **6. Preguntas Tipo Examen**
 
 ## **🔹 Sección 1: Clases y tipos de direcciones IPv4**
