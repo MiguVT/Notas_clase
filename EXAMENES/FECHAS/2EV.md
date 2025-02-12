@@ -21,7 +21,7 @@
 - **17/02** → Digitalización
 - **19/02** → Ofimática
 - **20/02** → Redes Locales
-- **24/02** → Examen Montaje
-- **26/02** → Práctica Redes Locales
-- **27/02** → Examen SOM
+- **24/02** → Montaje
+- **26/02** → Prevención Redes Locales
+- **27/02** → SOM
 - **04/03** → Inglés
