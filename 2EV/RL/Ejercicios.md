@@ -822,3 +822,54 @@ Cada subred con máscara `/24` tiene:
 
 📌 **Nota:**  
 Cada PC tiene asignada una IP dentro del rango **válido** de su subred y la puerta de enlace para cada subred es la dirección del **router** correspondiente (`.1`).  
+
+### **12/02/25**  
+
+## **2: La orden `ipconfig/ifconfig`**  
+
+Las órdenes `ipconfig` (Windows) e `ifconfig` (Linux) proporcionan información sobre la configuración de la red de la máquina, incluyendo direcciones IP, máscaras de subred y puertas de enlace.  
+
+---
+
+### **Ejercicio 2.1**  
+
+📌 **Salida de `ipconfig` y datos extraídos:**  
+
+| **Parámetro** | **Valor obtenido** |
+|--------------|------------------|
+| **Dirección física del adaptador Ethernet** | `7C-10-C9-83-AA-1B` |
+| **Dirección IP** | `192.168.5.13` |
+| **Máscara de subred** | `255.255.240.0` |
+| **Dirección IP del router (puerta de enlace)** | `192.168.0.99` |
+| **Servidor DNS** | `192.168.0.99` |
+| **Servidor DHCP** | **No habilitado** (configuración manual) |
+
+---
+
+### **Ejercicio 2.2**  
+
+📌 **¿Qué información no se podría obtener con `ifconfig` en Linux?**  
+
+El comando `ifconfig` en Linux **no muestra**:  
+- **Dirección IP del router (puerta de enlace)**  
+- **Servidor DNS**  
+- **Servidor DHCP**  
+
+📌 **¿Cómo encontrar esta información en Linux?**  
+
+Para obtener estos datos en Linux, se utilizan los siguientes comandos:  
+
+- **Puerta de enlace predeterminada (router):**  
+  ```bash
+  ip route show | grep default
+  ```
+  
+- **Servidores DNS configurados:**  
+  ```bash
+  cat /etc/resolv.conf
+  ```
+
+- **Servidor DHCP asignado:**  
+  ```bash
+  journalctl -u NetworkManager | grep DHCP
+  ```
