@@ -1215,3 +1215,262 @@ Mi favorito es nano, pero para algo tan simple prefiero usar echo:
   ```bash
   ls /etc/[^t]*
   ```
+
+---
+
+### **12/02/25**  
+
+## **Ejercicios I - Comando `grep`**  
+
+Antes de empezar la práctica, es necesario descargar y preparar los archivos necesarios. Como no me resulta muy dificil, hare un tutorial para cualquier persona que no tenga conocimiento, lo tratare de hacer lo mas sencillo posible.
+
+---
+
+### **📌 Descarga del archivo en la máquina virtual**  
+
+Para obtener los archivos desde el host Windows, podemos iniciar un **servidor HTTP temporal** en la carpeta donde se encuentra el archivo `ficherosGrep.zip`.  
+
+1️⃣ **Iniciar servidor HTTP en Windows**  
+En la terminal de Windows (`cmd` o `PowerShell`), dirigirse a la carpeta donde está el archivo y ejecutar:  
+```powershell
+python -m http.server 8080
+```
+Esto iniciará un servidor web en el puerto **8080**.
+
+2️⃣ **Descargar el archivo en Linux**  
+Desde la máquina Linux, abrir la terminal y ejecutar:  
+```bash
+wget http://<IP_DEL_HOST>:8080/ficherosGrep.zip
+```
+⚠️ **Reemplaza `<IP_DEL_HOST>` con la IP del equipo Windows en la red local**. Puedes obtener esta IP con:  
+```powershell
+ipconfig
+```
+En mi caso es la 192.168.5.13
+
+Luego, descomprimir el archivo en el directorio personal:  
+```bash
+unzip ficherosGrep.zip -d ~/PATRONES
+```
+
+✅ **Archivos preparados en `~/PATRONES`**  
+![imagen](https://github.com/user-attachments/assets/a53c6127-18aa-41f6-ac3c-84dd2b1d6d52)
+
+---
+
+### **Ejercicios `grep`**  
+
+#### 📂 **Sobre el archivo `comprimirDescomprimir.md`**  
+
+### **1. Obtén las líneas que empiezan por `#` en el fichero.**  
+- Comando:  
+  ```bash
+  grep '^#' ~/PATRONES/comprimirDescomprimir.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/fdc49ce7-0cb7-43d3-8469-2a9ce6af8d92)
+
+---
+
+### **2. Obtén solo las líneas que comiencen por `#`, pero excluyendo `##`**  
+- Comando:  
+  ```bash
+  grep '^#[^#]' ~/PATRONES/comprimirDescomprimir.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/95e687a4-5b35-43bc-b5e7-2e28545033ac)
+
+---
+
+### **3. Muestra solo las líneas que comiencen con el comando `tar`.**  
+- Comando:  
+  ```bash
+  grep '^tar' ~/PATRONES/comprimirDescomprimir.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/a82e1768-600e-45bb-880c-925637b63aca)
+
+---
+
+#### 📂 **Sobre el archivo `gestionUsuarios.md`**  
+
+### **4. Muestra los comandos ejecutados como `sudo` (que comienzan por `sudo`).**  
+- Comando:  
+  ```bash
+  grep '^sudo' ~/PATRONES/gestionUsuarios.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/f3b0ac96-5d2b-4ee9-b156-97696a5acb93)
+
+
+---
+
+### **5. Busca todas las líneas que contengan palabras remarcadas con `*` (ejemplo: `*palabra*`).**  
+- Comando:  
+  ```bash
+  grep '\*.*\*' ~/PATRONES/gestionUsuarios.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/1ec95975-32dd-42c1-a0ba-8f044e0204e3)
+
+
+---
+
+### **6. Devuelve todas las líneas que contengan la palabra `grupo`.**  
+- Comando:  
+  ```bash
+  grep 'grupo' ~/PATRONES/gestionUsuarios.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/37987dc4-72ae-4569-8106-324b6413c93a)
+
+---
+
+### **7. Devuelve todas las líneas que terminen en dos puntos (`:`).**  
+- Comando:  
+  ```bash
+  grep ':$' ~/PATRONES/gestionUsuarios.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/01303217-bc35-4bee-9fae-60c8706fdfe9)
+
+---
+
+### **8. Devuelve todas las líneas que contengan la palabra `bash`.**  
+- Comando:  
+  ```bash
+  grep 'bash' ~/PATRONES/gestionUsuarios.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/5778c26f-fa51-4988-aac0-6f284943c2b8)
+
+---
+
+#### 📂 **Sobre todos los archivos (`*.md`)**  
+
+### **9. Devuelve todas las líneas que comiencen con `#`.**  
+- Comando:  
+  ```bash
+  grep '^#' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/520b8343-75ac-4c8b-9271-dd19708ed6aa)
+
+---
+
+### **10. Devuelve todas las líneas que comiencen con `##`.**  
+- Comando:  
+  ```bash
+  grep '^##' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/d9b5eba9-c3e4-434c-badd-83ae0a1394d9)
+
+---
+
+### **11. Devuelve todas las líneas que comiencen con `###`.**  
+- Comando:  
+  ```bash
+  grep '^###' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/3c6ec824-0639-4a02-b268-21dcffb308f1)
+
+---
+
+### **12. ¿Qué archivos contienen una sección llamada `Referencias`?**  
+- Comando:  
+  ```bash
+  grep -l 'Referencias' ~/PATRONES/*.md
+  ```
+  ✅ **El parámetro `-l` solo muestra el nombre del archivo, sin el contenido.**  
+  ![imagen](https://github.com/user-attachments/assets/a988975d-4a8d-4585-b831-26985fb2c431)
+
+---
+
+### **13. Devuelve todas las líneas que comiencen por `N`, `P` o `S`.**  
+- Comando:  
+  ```bash
+  grep '^[NPS]' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/88edc708-ed59-4d2a-82f1-03bf6733735a)
+
+---
+
+### **14. Devuelve todas las líneas que terminen en `t`, `s` o `n`.**  
+- Comando:  
+  ```bash
+  grep '[tsn]$' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/21d288d2-7ec8-4247-9f5f-e61f7238f449)
+
+---
+
+### **15. Devuelve todas las líneas que terminen en mayúscula.**  
+- Comando:  
+  ```bash
+  grep '[A-Z]$' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/7e709d19-c59b-4c0e-af92-0ea2889bb9cd)
+
+---
+
+### **16. Devuelve todas las líneas que comiencen en mayúscula.**  
+- Comando:  
+  ```bash
+  grep '^[A-Z]' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/243cdad2-9842-4b20-baa2-eee5e40d9c8f)
+  ![imagen](https://github.com/user-attachments/assets/23c4d5b5-7b10-4ad7-ad16-a678d0cfb44a)
+
+---
+
+### **17. Devuelve todas las líneas que comiencen en mayúscula y terminen en minúscula.**  
+- Comando:  
+  ```bash
+  grep '^[A-Z].*[a-z]$' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/c696047a-898d-447c-a34e-4433be224874)
+
+---
+
+### **18. Devuelve todas las líneas que pertenezcan a una enumeración (empiezan por un número).**  
+- Comando:  
+  ```bash
+  grep '^[0-9]' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/9007447e-a765-44d0-a9fe-3881dd1322de)
+
+---
+
+### **19. Devuelve todas las líneas que formen parte de una lista no numerada (`-`).**  
+- Comando:  
+  ```bash
+  grep '^- ' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/c36b8bc0-1319-4109-aebe-16e3c5c5e61c)
+
+---
+
+### **20. ¿En qué archivos aparece la palabra `autoclean`?**  
+- Comando:  
+  ```bash
+  grep -l 'autoclean' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/11ff6f95-e63c-47b8-a821-a633f167b39f)
+
+---
+
+### **21. ¿En qué archivos aparece la ruta `/etc/passwd`?**  
+- Comando:  
+  ```bash
+  grep -l '/etc/passwd' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/2d6a3359-e496-4292-8a84-a0220f8a1dce)
+
+---
+
+### **22. Devuelve todas las líneas que comiencen en mayúscula, contengan la palabra `para` y terminen en punto.**  
+- Comando:  
+  ```bash
+  grep '^[A-Z].*para.*\.$' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/84e0e6d8-1783-4c78-b20d-b432b44678d0)
+
+---
+
+### **23. Devuelve todas las líneas que comiencen en mayúscula, contengan la palabra `para` y terminen en `.` o `:`.**  
+- Comando:  
+  ```bash
+  grep '^[A-Z].*para.*[.:]$' ~/PATRONES/*.md
+  ```
+  ![imagen](https://github.com/user-attachments/assets/b951f18f-4f09-4ca8-a55f-2c09752afe5f)
