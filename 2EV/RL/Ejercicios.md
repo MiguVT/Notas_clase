@@ -873,3 +873,137 @@ Para obtener estos datos en Linux, se utilizan los siguientes comandos:
   ```bash
   journalctl -u NetworkManager | grep DHCP
   ```
+
+---
+
+## **Ejercicio 2.2: Alternativa sin `net-tools` en Ubuntu 20+**  
+
+Desde Ubuntu 20.04 en adelante, el paquete `net-tools` (que incluye `ifconfig`) **no viene preinstalado** y ha sido reemplazado por `ip` y `nmcli`.  
+
+📌 **Alternativas modernas para obtener la misma información:**  
+
+| **Parámetro** | **`ifconfig` (antiguo)** | **Alternativa moderna** |
+|--------------|----------------|----------------------|
+| **Dirección IP** | `ifconfig` | `ip addr show` |
+| **Máscara de subred** | `ifconfig` | `ip -4 addr show` |
+| **Dirección MAC (física)** | `ifconfig` | `ip link show` |
+| **Puerta de enlace (router)** | `route -n` | `ip route show \| grep default` |
+| **Servidores DNS** | `/etc/resolv.conf` | `systemd-resolve --status` o `nmcli dev show` |
+| **Servidor DHCP** | `dhclient -v` | `journalctl -u NetworkManager \| grep DHCP` |
+
+---
+
+### **📌 Comandos equivalentes en Ubuntu 20+**  
+
+1️⃣ **Ver IP, máscara de subred y MAC:**  
+```bash
+ip addr show
+```
+
+2️⃣ **Ver la puerta de enlace predeterminada:**  
+```bash
+ip route show | grep default
+```
+
+3️⃣ **Ver servidores DNS en uso:**  
+```bash
+systemd-resolve --status | grep 'DNS Servers'
+```
+o alternativamente:  
+```bash
+nmcli dev show | grep 'IP4.DNS'
+```
+
+4️⃣ **Ver información de DHCP:**  
+```bash
+journalctl -u NetworkManager | grep DHCP
+```
+
+---
+
+✅ **Conclusión:**  
+- `ifconfig` y `route` **han sido reemplazados** por `ip` y `nmcli` en sistemas modernos.  
+- Ubuntu 20+ **ya no incluye `net-tools` por defecto**, por lo que se recomienda **usar los nuevos comandos** para obtener información de red.  
+
+---
+
+## **Ejercicio 3.1: Configuración de `ping` en Ubuntu y Windows**  
+
+El comando `ping` permite enviar solicitudes de eco a una dirección IP para comprobar la conectividad por el protocolo **ICMP**.
+
+---
+
+### **📌 En Ubuntu (Linux)**  
+
+Para enviar **10 paquetes de ping** con un **intervalo de 2 segundos** entre cada solicitud, se usa:  
+
+- **Comando:**  
+  ```bash
+  ping -c 10 -i 2 <IP_PUERTA_DE_ENLACE>
+  ```
+  
+📌 **Explicación de opciones:**  
+- `-c 10` → Envía **10 paquetes**.  
+- `-i 2` → Intervalo de **2 segundos** entre cada solicitud.  
+
+✅ **Ejemplo real:** Si la puerta de enlace es `192.168.1.1`:  
+```bash
+ping -c 10 -i 2 192.168.1.1
+```
+
+---
+
+### **📌 En Windows (`cmd` o `PowerShell`)**  
+
+En Windows, el comando `ping` usa una sintaxis diferente:  
+
+- **Comando:**  
+  ```cmd
+  ping -n 10 -w 2000 <IP_PUERTA_DE_ENLACE>
+  ```
+  
+📌 **Explicación de opciones:**  
+- `-n 10` → Envía **10 paquetes**.  
+- `-w 2000` → Espera **2000 milisegundos (2 segundos)** entre cada solicitud.  
+
+✅ **Ejemplo real:**  
+```cmd
+ping -n 10 -w 2000 192.168.1.1
+```
+
+---
+
+### **📌 Conclusión**  
+- **Sí, se puede realizar la misma acción en Windows y Linux**, pero la sintaxis varía.  
+- En **Ubuntu**, el intervalo se define con `-i`, mientras que en **Windows** se usa `-w` en milisegundos.
+
+---
+
+## **Ejercicio 4.3: Uso de `tracert`/`traceroute`**  
+
+El comando `tracert` (Windows) o `traceroute` (Linux) permite analizar la ruta que siguen los paquetes hasta un destino determinado, mostrando los **saltos intermedios** entre el origen y el destino.  
+
+---
+
+### **Resultados obtenidos**  
+
+| **Destino** | **Número de saltos** | **Observaciones** |
+|-------------|----------------------|--------------------|
+| `www.google.es` | **10 saltos** | Un salto con *timeout*, pero la traza llega al destino. |
+| `www.us.es` | **14 saltos** | Varios saltos con *timeout*, pero la traza llega al destino. |
+| `www.net.princeton.edu` | **23 saltos** | Múltiples *timeouts*, pero la traza llega al destino. |
+
+---
+
+### **Análisis del comportamiento de `tracert www.us.es`**  
+
+Durante la ejecución del `tracert` a `www.us.es`, se observaron varios **saltos intermedios con "Tiempo de espera agotado"** (`* * *` en la salida).  
+
+🔍 **Posibles causas de los *timeouts***:  
+1. **Filtros de seguridad**: Algunos routers o firewalls pueden **bloquear respuestas ICMP**, lo que impide que ciertos saltos respondan al `tracert`.  
+2. **Política de la red de destino**: Algunas organizaciones, como podria ser Jesuitas, pueden **restringir la visibilidad de su infraestructura** en la red.  
+3. **Pérdida de paquetes o congestión**: Un *timeout* en algunos nodos no significa que el tráfico no fluya, sino que **no responden a la solicitud ICMP**.  
+
+📌 **Conclusión:**  
+- Aunque algunos nodos intermedios **no respondieron**, la traza **llegó correctamente** a `www.us.es`, lo que confirma que la conexión con el destino es **funcional**.  
+- La ausencia de respuesta en ciertos saltos **no implica necesariamente un problema de conectividad**, sino que podría ser una **restricción de seguridad** en la red de la Universidad de Sevilla o intermediarios.  
