@@ -1007,3 +1007,65 @@ Durante la ejecución del `tracert` a `www.us.es`, se observaron varios **saltos
 📌 **Conclusión:**  
 - Aunque algunos nodos intermedios **no respondieron**, la traza **llegó correctamente** a `www.us.es`, lo que confirma que la conexión con el destino es **funcional**.  
 - La ausencia de respuesta en ciertos saltos **no implica necesariamente un problema de conectividad**, sino que podría ser una **restricción de seguridad** en la red de la Universidad de Sevilla o intermediarios.  
+
+
+---
+
+13/02/25
+### **07/02/25**  
+
+## **Ejercicio 4.4: Traceroute desde un servidor remoto a nuestra máquina**  
+
+**Dirección IP de la máquina:** `192.168.5.13`  
+**IP privada dentro de la red local** (no accesible desde Internet).  
+
+---
+
+### **🔹 Resultado del traceroute desde Springfield University u Host-tracker:**  
+```
+Tracing route to 192.168.5.13 over a maximum of 30 hops
+
+  1    <1 ms    <1 ms    <1 ms  192.168.0.99
+  2     *        *        *     Tiempo de espera agotado para esta solicitud.
+  3     *        *        *     Tiempo de espera agotado para esta solicitud.
+```
+🔹 **Explicación del resultado:**  
+- El traceroute **no puede alcanzar** la dirección **192.168.5.13** porque es una **IP privada** y no está accesible desde Internet.  
+- El rastreo se detiene en la puerta de enlace (`192.168.0.99`), ya que el router **no reenvía** el tráfico entrante hacia direcciones privadas a menos que haya reglas específicas configuradas (como port forwarding).  
+
+✅ **Conclusión:** No es posible hacer un traceroute desde Internet hasta una dirección IP privada como `192.168.5.13` porque está protegida por NAT y firewalls en el router.
+
+---
+
+## **Ejercicio 4.5: Traceroute a la IP pública del router**  
+
+**IP pública del router:** `88.4.178.31`  
+
+### **🔹 Resultado del traceroute a la IP pública:**  
+```
+Tracing route to 88.4.178.31 over a maximum of 30 hops
+
+  1     1 ms     1 ms     1 ms  192.168.144.1
+  2     5 ms     6 ms     5 ms  161.red-5-205-20.dynamicip.rima-tde.net [5.205.20.161]
+  3    10 ms     8 ms    10 ms  238.red-5-205-20.dynamicip.rima-tde.net [5.205.20.238]
+  4     *        *        *     Tiempo de espera agotado para esta solicitud.
+  5    14 ms    12 ms    13 ms  88.4.178.31
+```
+🔹 **Explicación del resultado:**  
+- En este caso, el traceroute **sí alcanza la IP pública del router** (`88.4.178.31`).  
+- Se observan varios saltos dentro de la red del ISP antes de llegar al destino.  
+- Algunos routers intermedios no responden porque están configurados para **no revelar su presencia**.  
+
+### **🔹 Comparación con el ejercicio 4.4**  
+1. **Diferente resultado**  
+   - En el traceroute a `192.168.5.13`, el tráfico **no llega** porque la IP es privada y está bloqueada por NAT.  
+   - En el traceroute a `88.4.178.31`, el tráfico **sí llega** porque es la IP pública del router.  
+
+2. **Simetría en el enrutamiento**  
+   - El camino de ida y el de vuelta no siempre son idénticos debido a **balanceo de carga** y diferentes políticas de enrutamiento de los ISPs.  
+   - Algunos routers pueden ser los mismos en ambos casos, pero con **IPs diferentes**, ya que muchas grandes redes usan múltiples interfaces y sistemas de redundancia.  
+
+✅ **Conclusión:**  
+- **Traceroute hasta `192.168.5.13` (IP privada) no funciona** debido a NAT y firewalls.  
+- **Traceroute hasta `88.4.178.31` (IP pública) sí funciona**, pero no revela dispositivos dentro de la red local.  
+- **Los caminos de ida y vuelta pueden diferir** dependiendo de cómo los ISPs gestionan el tráfico. 🚀
