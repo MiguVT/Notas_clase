@@ -1011,8 +1011,7 @@ Durante la ejecución del `tracert` a `www.us.es`, se observaron varios **saltos
 
 ---
 
-13/02/25
-### **07/02/25**  
+### 13/02/25
 
 ## **Ejercicio 4.4: Traceroute desde un servidor remoto a nuestra máquina**  
 
