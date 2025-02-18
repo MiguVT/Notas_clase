@@ -21,12 +21,15 @@ Este documento está diseñado tanto para mi estudio personal como para servir d
    - [Pila Dual](#-31-pila-dual)
    - [Túneles](#-32-túneles)
    - [Traducción de Direcciones (NAT64)](#-33-traducción-de-direcciones-nat64)
-4. [Ejemplos de Ejercicios](#4-ejemplos-de-ejercicios)
-   - [Cálculo de direcciones de red y broadcast](#-41-cálculo-de-direcciones-de-red-y-broadcast)
-   - [Identificación de clases de direcciones](#-42-identificación-de-clases-de-direcciones)
-   - [Conversión de direcciones IPv4 a IPv6](#-43-conversión-de-direcciones-ipv4-a-ipv6)
-5. [Consejos y Recursos Adicionales](#5-consejos-y-recursos-adicionales)
-6. [Preguntas tipo examen](#-6-preguntas-tipo-examen)
+4. [Puertos de Red: Concepto y Tabla de Puertos Comunes](#4-puertos-de-red-concepto-y-tabla-de-puertos-comunes)
+5. [Dirección MAC: Concepto y Funcionamiento](#5-direcci%C3%B3n-mac-concepto-y-funcionamiento)
+6. [Configuración de un Adaptador de Red en Ubuntu (Terminal)](#6-configuraci%C3%B3n-de-un-adaptador-de-red-en-ubuntu-terminal)
+7. [Ejemplos de Ejercicios](#7-ejemplos-de-ejercicios)
+   - [Cálculo de direcciones de red y broadcast](#-71-cálculo-de-direcciones-de-red-y-broadcast)
+   - [Identificación de clases de direcciones](#-72-identificación-de-clases-de-direcciones)
+   - [Conversión de direcciones IPv4 a IPv6](#-73-conversión-de-direcciones-ipv4-a-ipv6)
+8. [Consejos y Recursos Adicionales](#8-consejos-y-recursos-adicionales)
+9. [Preguntas tipo examen](#-9-preguntas-tipo-examen)
 
 ---
 
@@ -166,27 +169,144 @@ Hosts posibles = 2^6 - 2 = 62
 
 ---
 
-## 4. **Ejemplos de Ejercicios**
+## 4. **Puertos de Red: Concepto y Tabla de Puertos Comunes**
 
-### 📌 **4.1. Cálculo de direcciones de red y broadcast**
+### **¿Qué es un puerto en redes?**
+Un **puerto** es un número lógico que se usa para identificar procesos específicos dentro de un dispositivo en una red. Los puertos permiten la comunicación entre dispositivos y servicios en Internet.
+
+Los números de puerto van de **0 a 65535** y se dividen en tres rangos principales:
+
+- **Puertos bien conocidos (0-1023):** Usados por servicios y protocolos estándar (HTTP, HTTPS, FTP, etc.).
+- **Puertos registrados (1024-49151):** Usados por aplicaciones específicas de software.
+- **Puertos dinámicos o privados (49152-65535):** Asignados temporalmente a clientes.
+
+### **Tabla de Puertos Comunes**
+
+| **Puerto** | **Protocolo/Servicio** | **Descripción** |
+|-----------|----------------------|---------------|
+| 20, 21    | FTP                  | Transferencia de archivos |
+| 22        | SSH                  | Acceso remoto seguro |
+| 23        | Telnet               | Acceso remoto inseguro |
+| 25        | SMTP                 | Envío de correos electrónicos |
+| 53        | DNS                  | Resolución de nombres de dominio |
+| 67, 68    | DHCP                 | Asignación de IPs dinámicas |
+| 80        | HTTP                 | Navegación web sin cifrar |
+| 443       | HTTPS                | Navegación web cifrada |
+| 110       | POP3                 | Recepción de correos electrónicos |
+| 143       | IMAP                 | Gestión de correos en servidor |
+| 3306      | MySQL                | Base de datos MySQL |
+| 3389      | RDP                  | Escritorio remoto |
+
+---
+
+## 5. **Dirección MAC: Concepto y Funcionamiento**
+
+### **¿Qué es una dirección MAC?**
+Una **dirección MAC (Media Access Control)** es un identificador único de 48 bits asignado a cada tarjeta de red. Se representa en formato **hexadecimal**, por ejemplo:
+
+```
+00:1A:2B:3C:4D:5E
+```
+
+### **Formato de una dirección MAC**
+- **Los primeros 24 bits** identifican al fabricante (OUI - Organizationally Unique Identifier).
+- **Los últimos 24 bits** son únicos para cada dispositivo.
+
+### **Funcionamiento: Resolución de MAC en una Red**
+Cuando un dispositivo quiere comunicarse con otro en la misma red, pero solo conoce su dirección IP, usa el protocolo **ARP (Address Resolution Protocol)** para obtener la dirección MAC.
+
+```
+Dispositivo A (192.168.1.10) → ¿Quién tiene la IP 192.168.1.20?
+```
+```
+Dispositivo B (192.168.1.20) → Yo tengo esa IP. Mi MAC es 00:1A:2B:3C:4D:5E.
+```
+
+---
+
+## 6. **Configuración de un Adaptador de Red en Ubuntu (Terminal)**
+
+### **Ubuntu 22.04, 20.04 y 18.04 (Netplan)**
+Ubuntu 22.04 y 20.04 usan **Netplan** como el sistema de configuración de red.
+
+1. **Editar el archivo de configuración de Netplan**:
+   ```
+   sudo nano /etc/netplan/01-network-manager-all.yaml
+   ```
+2. **Ejemplo de configuración para IP estática**:
+   ```yaml
+   network:
+     version: 2
+     ethernets:
+       eth0:
+         dhcp4: no
+         addresses:
+           - 192.168.1.100/24
+         gateway4: 192.168.1.1
+         nameservers:
+           addresses:
+             - 8.8.8.8
+             - 1.1.1.1
+   ```
+3. **Guardar cambios y aplicar configuración**:
+   ```
+   sudo netplan apply
+   ```
+
+Para **usar DHCP**, cambia `dhcp4: no` por `dhcp4: yes` y elimina `addresses` y `gateway4`.
+
+---
+
+
+### **Ubuntu 16.04 y anteriores (interfaces manuales)**
+Ubuntu 16.04 y versiones anteriores **no usan Netplan**, sino el archivo `/etc/network/interfaces`.
+
+1. **Editar el archivo de configuración de red**:
+   ```
+   sudo nano /etc/network/interfaces
+   ```
+2. **Ejemplo de configuración para IP estática**:
+   ```
+   auto eth0
+   iface eth0 inet static
+       address 192.168.1.100
+       netmask 255.255.255.0
+       gateway 192.168.1.1
+       dns-nameservers 8.8.8.8 1.1.1.1
+   ```
+3. **Reiniciar la interfaz de red**:
+   ```
+   sudo systemctl restart networking
+   ```
+
+Para **usar DHCP**, cambia la configuración a:
+   ```
+   auto eth0
+   iface eth0 inet dhcp
+   ```
+
+---
+## 7. **Ejemplos de Ejercicios**
+
+### 📌 **7.1. Cálculo de direcciones de red y broadcast**
 
 👉 **IP:** `10.0.1.25/8`  
 📌 **Dirección de Red:** `10.0.0.0`  
 📌 **Broadcast:** `10.255.255.255`
 
-### 📌 **4.2. Identificación de clases de direcciones**
+### 📌 **7.2. Identificación de clases de direcciones**
 
 👉 **IP:** `192.168.1.1`  
 📌 **Clase:** C
 
-### 📌 **4.3. Conversión de direcciones IPv4 a IPv6**
+### 📌 **7.3. Conversión de direcciones IPv4 a IPv6**
 
 👉 **IPv4:** `192.168.1.1`  
 📌 **IPv6 Mapeada:** `::FFFF:192.168.1.1`
 
 ---
 
-## 5. **Consejos y Recursos Adicionales**
+## 8. **Consejos y Recursos Adicionales**
 
 1. **Memoriza los rangos de direcciones privadas y las máscaras por defecto.**
 2. **Practica ejercicios de conversión binaria y operaciones AND.**
@@ -194,7 +314,7 @@ Hosts posibles = 2^6 - 2 = 62
 
 ---
 
-# 📌 **6. Preguntas Tipo Examen**
+# 📌 **9. Preguntas Tipo Examen**
 
 ## **🔹 Sección 1: Clases y tipos de direcciones IPv4**
 **1.1.** ¿A qué clase pertenecen las siguientes direcciones IPv4?  
