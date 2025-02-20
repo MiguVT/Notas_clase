@@ -40,4 +40,5 @@ Los **usuarios normales** son aquellos creados manualmente o durante la instalac
 Cuando un usuario se convierte en administrador mediante `sudo`, puede ejecutar comandos con privilegios de root temporalmente.
 
 ```bash
-sudo apt update  # Ejecuta la actualización del sistema como root```
+sudo apt update  # Ejecuta la actualización del sistema como root
+```
