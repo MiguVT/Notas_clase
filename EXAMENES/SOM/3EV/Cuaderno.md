@@ -70,7 +70,7 @@ usuario:x:UID:GID:comentario:directorio_home:shell
 
 Ejemplo de línea en `/etc/passwd`:
 ```
-miguel:x:1001:1001:Usuario Miguel:/home/miguel:/bin/bash
+yara:x:1001:1001:Usuario Yara:/home/yara:/bin/bash
 ```
 
 ---
@@ -96,7 +96,7 @@ usuario:$6$hashcifrado:fecha_ultima_cambio:min:max:aviso:inactividad:expiracion:
 
 Ejemplo:
 ```
-miguel:$6$Jfnc72hjsdP$7c0987ghlsdf789:19000:7:90:7:30:20000:
+yara:$6$Jfnc72hjsdP$7c0987ghlsdf789:19000:7:90:7:30:20000:
 ```
 
 ---
@@ -110,9 +110,9 @@ nombre_grupo:x:GID:usuarios_miembros
 
 Ejemplo:
 ```
-sudo:x:27:miguel,pedro
+sudo:x:27:yara,pedro
 ```
-Aquí, `sudo` es un grupo con `GID 27`, y los usuarios `miguel` y `pedro` son miembros.
+Aquí, `sudo` es un grupo con `GID 27`, y los usuarios `yara` y `pedro` son miembros.
 
 ---
 
