@@ -45,6 +45,8 @@ sudo apt update  # Ejecuta la actualización del sistema como root
 
 ## **5.1.2 Ficheros de Configuración**
 
+###### 21/02/25
+
 Los archivos de configuración en Linux almacenan información esencial sobre los usuarios, grupos y políticas del sistema. Estos archivos se encuentran en el directorio `/etc/` y son utilizados por herramientas de gestión de usuarios y autenticación.
 
 A continuación, se detallan los archivos más importantes:
