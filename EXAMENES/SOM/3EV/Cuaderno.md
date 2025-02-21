@@ -42,3 +42,203 @@ Cuando un usuario se convierte en administrador mediante `sudo`, puede ejecutar 
 ```bash
 sudo apt update  # Ejecuta la actualización del sistema como root
 ```
+
+## **5.1.2 Ficheros de Configuración**
+
+Los archivos de configuración en Linux almacenan información esencial sobre los usuarios, grupos y políticas del sistema. Estos archivos se encuentran en el directorio `/etc/` y son utilizados por herramientas de gestión de usuarios y autenticación.
+
+A continuación, se detallan los archivos más importantes:
+
+### **📂 /etc/passwd**
+Este archivo contiene la información básica de los usuarios del sistema. Cada línea representa un usuario y tiene la siguiente estructura:
+
+```
+usuario:x:UID:GID:comentario:directorio_home:shell
+```
+
+| Campo | Descripción |
+|--------|--------------------------------------------|
+| **usuario** | Nombre del usuario. |
+| **x** | Indica que la contraseña está en `/etc/shadow`. |
+| **UID** | Identificador único del usuario. |
+| **GID** | Identificador del grupo principal del usuario. |
+| **comentario** | Información opcional sobre el usuario. |
+| **directorio_home** | Directorio de trabajo del usuario (Ej: `/home/usuario`). |
+| **shell** | Intérprete de comandos asignado (Ej: `/bin/bash`). |
+
+Ejemplo de línea en `/etc/passwd`:
+```
+miguel:x:1001:1001:Usuario Miguel:/home/miguel:/bin/bash
+```
+
+---
+
+### **📂 /etc/shadow**
+Contiene las contraseñas cifradas de los usuarios y otros parámetros relacionados con la autenticación.
+
+```
+usuario:$6$hashcifrado:fecha_ultima_cambio:min:max:aviso:inactividad:expiracion:reserva
+```
+
+| Campo | Descripción |
+|--------|--------------------------------------------|
+| **usuario** | Nombre del usuario. |
+| **$6$hashcifrado** | Contraseña encriptada en SHA-512. |
+| **fecha_ultima_cambio** | Días desde 01/01/1970 del último cambio de contraseña. |
+| **min** | Mínimos días antes de cambiar la contraseña. |
+| **max** | Máximos días antes de forzar cambio de contraseña. |
+| **aviso** | Días antes de la expiración para avisar al usuario. |
+| **inactividad** | Días tras expiración en que se desactiva la cuenta. |
+| **expiracion** | Fecha en que la cuenta expira. |
+| **reserva** | Reservado para uso futuro. |
+
+Ejemplo:
+```
+miguel:$6$Jfnc72hjsdP$7c0987ghlsdf789:19000:7:90:7:30:20000:
+```
+
+---
+
+### **📂 /etc/group**
+Este archivo lista los grupos del sistema. Su estructura es:
+
+```
+nombre_grupo:x:GID:usuarios_miembros
+```
+
+Ejemplo:
+```
+sudo:x:27:miguel,pedro
+```
+Aquí, `sudo` es un grupo con `GID 27`, y los usuarios `miguel` y `pedro` son miembros.
+
+---
+
+### **📂 /etc/gshadow**
+Similar a `/etc/group`, pero contiene contraseñas cifradas para grupos.
+
+Ejemplo:
+```
+sudo:!::
+```
+
+---
+
+### **📂 /etc/default/useradd**
+Contiene valores predeterminados para la creación de nuevos usuarios.
+
+Ejemplo de configuración:
+```
+GROUP=100
+HOME=/home
+INACTIVE=-1
+SHELL=/bin/bash
+SKEL=/etc/skel
+```
+
+---
+
+### **📂 /etc/adduser.conf**
+Configura opciones avanzadas para `adduser`.
+
+Ejemplo:
+```
+DSHELL=/bin/bash
+DHOME=/home
+FIRST_UID=1000
+LAST_UID=60000
+FIRST_GID=1000
+LAST_GID=60000
+```
+
+---
+
+### **📂 /etc/deluser.conf**
+Contiene opciones para eliminar usuarios.
+
+Ejemplo:
+```
+REMOVE_HOME = 0
+REMOVE_ALL_FILES = 0
+BACKUP = 0
+```
+
+Si `REMOVE_HOME = 1`, se eliminará el directorio `/home/usuario` al borrar un usuario.
+
+---
+
+### **📂 /etc/login.defs**
+Define políticas de seguridad en el login.
+
+Ejemplo:
+```
+PASS_MAX_DAYS 90
+PASS_MIN_DAYS 7
+PASS_WARN_AGE 7
+UID_MIN 1000
+UID_MAX 60000
+GID_MIN 1000
+GID_MAX 60000
+```
+- `PASS_MAX_DAYS 90`: La contraseña debe cambiarse cada 90 días.
+- `PASS_WARN_AGE 7`: Se avisa con 7 días de anticipación.
+
+---
+
+### **📂 /etc/shells**
+Lista los shells disponibles en el sistema.
+
+Ejemplo:
+```
+/bin/sh
+/bin/bash
+/usr/bin/zsh
+```
+
+Si un usuario tiene `/usr/sbin/nologin` como shell, significa que **no puede iniciar sesión**.
+
+Aquí tienes la sección en **Markdown** con la información sobre **`/etc/skel`** para que la añadas al cuaderno:
+
+---
+
+## **📂 Directorios de Configuración: `/etc/skel`**
+
+El directorio `/etc/skel` es utilizado como una plantilla para la creación de nuevos usuarios en el sistema. Cuando se añade un nuevo usuario con `useradd`, su directorio **`/home/usuario`** se genera copiando el contenido de `/etc/skel`.
+
+### **📌 Función de `/etc/skel`**
+- Al crear un nuevo usuario, se copian automáticamente los archivos y carpetas de `/etc/skel` a su directorio personal.
+- Se pueden incluir archivos de configuración predeterminados como `.bashrc`, `.profile` o `.vimrc` para establecer configuraciones iniciales.
+
+### **📂 Contenido habitual de `/etc/skel`**
+Por defecto, `/etc/skel` puede contener archivos como:
+
+```
+/etc/skel/
+├── .bashrc
+├── .profile
+├── .bash_logout
+```
+
+- **`.bashrc`** → Configuración del shell Bash para cada usuario.
+- **`.profile`** → Configuración del entorno de usuario.
+- **`.bash_logout`** → Comandos ejecutados al cerrar sesión.
+
+### **📌 Personalización de `/etc/skel`**
+El administrador puede agregar o modificar archivos en `/etc/skel` para que todos los nuevos usuarios los reciban automáticamente.
+
+Ejemplo: Si queremos que cada usuario nuevo tenga un directorio `Documentos`, podemos hacer:
+
+```bash
+mkdir /etc/skel/Documentos
+```
+
+Ahora, cualquier usuario nuevo tendrá automáticamente una carpeta `~/Documentos`.
+
+### **📌 Consideraciones**
+- **No afecta a usuarios ya creados**, solo a nuevos usuarios.
+- **Debe ser accesible solo para root** para evitar modificaciones no autorizadas.
+
+---
+
+### **📌 Conclusión**
+Estos archivos son esenciales para la gestión de usuarios y seguridad en Linux. Manipularlos incorrectamente puede comprometer el sistema, por lo que deben modificarse con herramientas como `usermod`, `passwd` y `groupmod` en lugar de editarlos manualmente.
