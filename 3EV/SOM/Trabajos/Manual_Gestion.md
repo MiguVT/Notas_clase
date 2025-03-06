@@ -114,6 +114,8 @@ sudo groupadd linux
 sudo usermod -aG linux estudiante
 groups estudiante
 ```
+![imagen](https://github.com/user-attachments/assets/8ff9691a-91f6-4c3b-a2af-52d0e17d9c63)
+
 
 ---
 
@@ -129,6 +131,8 @@ touch practica.txt
 chmod 644 practica.txt
 sudo chown estudiante practica.txt
 ```
+![imagen](https://github.com/user-attachments/assets/888c14fa-bb08-4da7-be71-c3c80afdce34)
+
 
 ---
 
@@ -146,6 +150,7 @@ sudo mkdir /opt/colaborativo
 sudo chown :colaboradores /opt/colaborativo
 sudo chmod 770 /opt/colaborativo
 ```
+![imagen](https://github.com/user-attachments/assets/d6a93a82-00e7-4e72-9219-c2dea3ff821e)
 
 ---
 
