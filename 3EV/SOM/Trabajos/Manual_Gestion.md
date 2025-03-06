@@ -150,4 +150,4 @@ sudo chmod 770 /opt/colaborativo
 ---
 
 ## Conclusión
-Este manual que he creado proporciona una base sólida para gestionar usuarios, grupos y permisos en Linux. Con estos conocimientos, es posible administrar sistemas de manera efectiva, asegurando seguridad y control sobre los archivos y usuarios del sistema.
+Este manual que he creado proporciona una buena base para poder gestionar usuarios, grupos y permisos en Linux. Con estos conocimientos, es posible administrar sistemas de manera efectiva, con seguridad y control sobre los archivos y usuarios del sistema. Además, los ejercicios que nos pedía el trabajo, ayuda a practicar los comandos más importantes.
