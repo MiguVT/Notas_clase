@@ -79,11 +79,12 @@ Para evitar interferencias con otras redes WiFi cercanas, utilizamos **Vistumble
 
 ### 📌 Pasos:
 1. Descargamos e instalamos **Vistumbler**.
-2. Escaneamos las redes cercanas.
-3. Identificamos el canal menos saturado.
+2. Escaneamos las redes cercanas. (boton Start)
+3. Identificamos el canal menos saturado. (Para una vista mas clara a la izquierda esta un desplegable "Channel" con todos los canales escaneados.
 4. Configuramos el AP en dicho canal.
 
 ![imagen](https://github.com/user-attachments/assets/186eab53-0365-4855-8120-10a8c51ae8d6)
+![imagen](https://github.com/user-attachments/assets/2495ec9a-d531-4f39-b651-7681a039623c)
 
 📌 **Justificación:** Se ha seleccionado el canal `2` porque presenta menos interferencias en comparación con otros canales cercanos y hay uno llamado WIFI-BUS que interpreto que sera un wifi de un bus y sera temporal.
 Para elegir un mejor canal, suelo usar el movil con la app WifiAnalyzer disponible en la tienda F-Droid, pero en este caso he utilizado este otro programa ya que no podemos usar el movil.
