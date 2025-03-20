@@ -1,4 +1,4 @@
-![imagen](https://github.com/user-attachments/assets/9567b4f1-e396-412b-81a7-e93b58dc1c6f)# **Gestión de Procesos en GNU/Linux**
+# **Gestión de Procesos en GNU/Linux**
 
 ## **1. ¿Qué es el PID de un proceso en GNU/Linux?**  
 El **PID (Process ID)** es un número único que el sistema operativo asigna a cada proceso en ejecución. Sirve para identificar y gestionar procesos dentro del sistema.
