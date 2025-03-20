@@ -12,7 +12,7 @@
 1. [**Objetivo del documento**](#-objetivo-del-documento)  
 2. [**Configuración del dispositivo**](#-configuración-del-dispositivo)  
    - [Acceso al AP](#-acceso-al-ap)  
-   - [Dirección IP y DHCP](#-dirección-ip-y-dhcp)  
+   - [Dirección IP y DHCP](#-dirección-ip-y-dhcp)
    - [Configuración de la red WiFi](#-configuración-de-la-red-wifi)  
    - [Seguridad y filtrado MAC](#-seguridad-y-filtrado-mac)  
 3. [**Elección del canal menos interferido**](#-elección-del-canal-menos-interferido)  
@@ -22,7 +22,7 @@
    - [Conocer la configuración del adaptador WiFi](#-c-conocer-la-configuración-del-adaptador-wifi)  
    - [Recuperar claves de seguridad de perfiles almacenados](#-d-recuperar-claves-de-seguridad-de-perfiles-almacenados)  
    - [Borrar un perfil de red WiFi](#-e-borrar-un-perfil-de-red-wifi)  
-   - [Explorar redes cercanas](#-f-explorar-redes-cercanas)  
+   - [Explorar redes cercanas](#-f-explorar-redes-wifi-cercanas)  
 
 ---
 
