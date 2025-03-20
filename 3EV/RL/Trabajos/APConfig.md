@@ -87,6 +87,7 @@ Para evitar interferencias con otras redes WiFi cercanas, utilizamos **Vistumble
 
 📌 **Justificación:** Se ha seleccionado el canal `2` porque presenta menos interferencias en comparación con otros canales cercanos y hay uno llamado WIFI-BUS que interpreto que sera un wifi de un bus y sera temporal.
 Para elegir un mejor canal, suelo usar el movil con la app WifiAnalyzer disponible en la tienda F-Droid, pero en este caso he utilizado este otro programa ya que no podemos usar el movil.
+
 ---
 
 ## ⚙️ Uso del Comando `netsh wlan`
