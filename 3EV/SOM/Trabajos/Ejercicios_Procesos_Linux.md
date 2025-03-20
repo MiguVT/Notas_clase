@@ -135,7 +135,8 @@ O usando `pkill`:
 ```bash
 pkill -9 firefox
 ```
-Como no esta firefox abierto, no encontrará el proceso
+Como no esta firefox abierto, no encontrará el proceso:
+
 ![imagen](https://github.com/user-attachments/assets/adbcfbae-9165-40b4-ae9e-82e9fa9a6931)
 
 
