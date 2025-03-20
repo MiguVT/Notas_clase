@@ -86,7 +86,9 @@ Para evitar interferencias con otras redes WiFi cercanas, utilizamos **Vistumble
 ![imagen](https://github.com/user-attachments/assets/186eab53-0365-4855-8120-10a8c51ae8d6)
 ![imagen](https://github.com/user-attachments/assets/2495ec9a-d531-4f39-b651-7681a039623c)
 
-📌 **Justificación:** Se ha seleccionado el canal `2` porque presenta menos interferencias en comparación con otros canales cercanos y hay uno llamado WIFI-BUS que interpreto que sera un wifi de un bus y sera temporal.
+Tambien en extra hay una opcion de graph view pero es Experimental
+
+📌 **Justificación:** Se ha seleccionado el canal `2` porque presenta menos interferencias en comparación con otros canales cercanos y hay uno llamado WIFI-BUS que interpreto que sera un wifi de un bus y sera temporal. Aun asi, no he encontrado un buen canal debido a todas las interferencias que tenemos, lo mejor seria usar 5GHz o incluso 6GHz si los dispositivos lo soportan.
 Para elegir un mejor canal, suelo usar el movil con la app WifiAnalyzer disponible en la tienda F-Droid, pero en este caso he utilizado este otro programa ya que no podemos usar el movil.
 
 ---
