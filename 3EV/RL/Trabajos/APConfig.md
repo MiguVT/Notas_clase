@@ -16,7 +16,7 @@
    - [Configuración de la red WiFi](#-configuración-de-la-red-wifi)  
    - [Seguridad y filtrado MAC](#-seguridad-y-filtrado-mac)  
 3. [**Elección del canal menos interferido**](#-elección-del-canal-menos-interferido)  
-4. [**Comando `netsh wlan` en Windows**](#-uso-del-comando-netsh-wlan)  
+4. [**Comando `netsh wlan` en Windows**](#%EF%B8%8F-uso-del-comando-netsh-wlan)  
    - [Ver perfiles de red WiFi](#-a-ver-perfiles-de-red-wifi)  
    - [Obtener información de la tarjeta inalámbrica](#-b-obtener-información-de-la-tarjeta-inalámbrica)  
    - [Conocer la configuración del adaptador WiFi](#-c-conocer-la-configuración-del-adaptador-wifi)  
