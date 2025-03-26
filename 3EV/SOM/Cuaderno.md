@@ -336,3 +336,66 @@ export EDITOR=nano
 Esto hará que el sistema use `nano` como editor de texto predeterminado para ese usuario.
 ### **📌 Conclusión**
 Estos archivos son esenciales para la gestión de usuarios y seguridad en Linux. Manipularlos incorrectamente puede comprometer el sistema, por lo que deben modificarse con herramientas como `usermod`, `passwd` y `groupmod` en lugar de editarlos manualmente.
+
+Perfecto, aquí tienes una explicación extendida para las opciones más relevantes de `env` y `echo`, en formato Markdown para tu cuaderno:
+
+## 🛠️ Comandos básicos relacionados con variables
+
+### **`set`**
+Muestra todas las variables **(locales y del entorno)** definidas en la shell actual.
+
+```bash
+set
+```
+
+---
+
+### **`env`**
+Muestra únicamente las variables de **entorno**. También permite ejecutar comandos con un entorno modificado.
+
+- **`-u`**: Elimina una variable del entorno antes de ejecutar el comando.
+  
+```bash
+env -u USER env     # Ejecuta env sin la variable USER
+```
+
+---
+
+### **`export`**
+Convierte una variable **local en variable de entorno**, o crea una nueva variable de entorno.
+
+```bash
+export NOMBRE=valor
+```
+
+---
+
+### **`unset`**
+Elimina una variable del entorno o de la shell. Si era de entorno, deja de heredarse.
+
+```bash
+unset NOMBRE
+```
+
+---
+
+### **`echo`**
+Muestra texto o el valor de variables.
+
+```bash
+echo $NOMBRE
+```
+
+#### Opciones comunes:
+- `-n`: No imprime salto de línea al final.
+- `-e`: Habilita la interpretación de caracteres especiales (por defecto se ignoran).
+
+#### Caracteres especiales con `-e`:
+- `\n`: Salto de línea.
+- `\t`: Tabulación.
+- `\c`: Finaliza la línea (descarta lo que viene después).
+
+```bash
+echo -e "Hola\tmundo\nEsto es un salto de línea"
+echo -e "Esto se detiene aquí\cNO SE IMPRIME"
+```
