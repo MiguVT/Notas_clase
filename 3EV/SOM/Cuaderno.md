@@ -337,8 +337,6 @@ Esto hará que el sistema use `nano` como editor de texto predeterminado para es
 ### **📌 Conclusión**
 Estos archivos son esenciales para la gestión de usuarios y seguridad en Linux. Manipularlos incorrectamente puede comprometer el sistema, por lo que deben modificarse con herramientas como `usermod`, `passwd` y `groupmod` en lugar de editarlos manualmente.
 
-Perfecto, aquí tienes una explicación extendida para las opciones más relevantes de `env` y `echo`, en formato Markdown para tu cuaderno:
-
 ## 🛠️ Comandos básicos relacionados con variables
 
 ### **`set`**
