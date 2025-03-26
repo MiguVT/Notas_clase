@@ -240,7 +240,105 @@ Ahora, cualquier usuario nuevo tendrá automáticamente una carpeta `~/Documento
 - **No afecta a usuarios ya creados**, solo a nuevos usuarios.
 - **Debe ser accesible solo para root** para evitar modificaciones no autorizadas.
 
+
 ---
 
+
+## **6.1 Variables**
+
+###### 26/03/25
+Aquí tienes la sección en **Markdown** con formato de cuaderno, lista para añadir directamente al archivo:
+
+---
+
+## **6.1 Variables**
+
+Las **variables** en Linux representan espacios en la memoria que almacenan información. Pueden contener valores o estar vacías. Su valor puede cambiar durante la ejecución del sistema o de scripts.
+
+Existen **dos tipos principales** de variables en Linux:
+
+---
+
+### 🔹 **Variables Locales**
+
+- Solo son visibles dentro de la **shell actual**.
+- Se crean simplemente al asignarles un valor.
+- Se accede a ellas anteponiendo el símbolo `$`.
+
+#### ✅ **Ejemplo:**
+```bash
+fruta_favorita="manzana"
+echo "Tu fruta favorita es $fruta_favorita"
+```
+
+---
+
+### 🔹 **Variables del Entorno**
+
+- Son accesibles desde **todas las shells y procesos** derivados.
+- Se suelen escribir en **mayúsculas** por convención.
+- Se declaran con `export` o se definen en archivos como:
+  - `/etc/environment`
+  - `/etc/default/locale`
+  - `/etc/profile`
+
+#### ✅ Para que los cambios tengan efecto:
+- Hay que **reiniciar la shell** o **reiniciar el entorno**.
+
+---
+
+### 🔹 **Variables de Entorno Comunes**
+
+| Variable   | Descripción                                                                 |
+|------------|------------------------------------------------------------------------------|
+| `HOME`     | Ruta al directorio personal del usuario.                                    |
+| `USER`     | Nombre del usuario actual.                                                  |
+| `SHELL`    | Ruta al intérprete de comandos (por ejemplo: `/bin/bash`).                  |
+| `HOSTNAME` | Nombre del sistema/equipo.                                                  |
+| `TERM`     | Tipo de terminal utilizado.                                                 |
+| `LOGNAME`  | Usuario que inició sesión.                                                  |
+| `PATH`     | Directorios en los que el sistema busca ejecutables.                        |
+| `PWD`      | Directorio de trabajo actual.                                               |
+| `OLDPWD`   | Último directorio visitado (útil para `cd -`).                              |
+
+---
+
+### 🧠 **PS1 y PS2: Prompts del Shell**
+
+- **`PS1` (Prompt String 1)**:  
+  Define el **formato del prompt principal** (lo que ves al abrir la terminal).  
+  Puedes personalizarlo con variables como `\u` (usuario), `\h` (host), `\w` (directorio actual).
+
+  #### ✅ Ejemplo:
+  ```bash
+  PS1="\u@\h:\w$ "
+  ```
+  Esto mostraría: `usuario@equipo:/ruta/actual$`
+
+- **`PS2` (Prompt String 2)**:  
+  Aparece cuando un comando no ha terminado (por ejemplo, una comilla sin cerrar).
+
+  #### ✅ Ejemplo:
+  ```bash
+  echo "Hola
+  > mundo"
+  ```
+
+  El símbolo `>` es el prompt PS2, indicando que espera que completes el comando.
+
+---
+
+### 🗂️ **Archivo `.bashrc`**
+
+- Archivo de configuración **personal** que se ejecuta al iniciar sesión.
+- Permite **definir variables locales permanentes** para el usuario.
+- Se encuentra en el **directorio personal del usuario** (`~/.bashrc`).
+
+#### ✅ Ejemplo:
+```bash
+export EDITOR=nano
+```
+
+Esto hará que el sistema use `nano` como editor de texto predeterminado para ese usuario.
 ### **📌 Conclusión**
 Estos archivos son esenciales para la gestión de usuarios y seguridad en Linux. Manipularlos incorrectamente puede comprometer el sistema, por lo que deben modificarse con herramientas como `usermod`, `passwd` y `groupmod` en lugar de editarlos manualmente.
