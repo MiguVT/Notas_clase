@@ -247,12 +247,6 @@ Ahora, cualquier usuario nuevo tendrá automáticamente una carpeta `~/Documento
 ## **6.1 Variables**
 
 ###### 26/03/25
-Aquí tienes la sección en **Markdown** con formato de cuaderno, lista para añadir directamente al archivo:
-
----
-
-## **6.1 Variables**
-
 Las **variables** en Linux representan espacios en la memoria que almacenan información. Pueden contener valores o estar vacías. Su valor puede cambiar durante la ejecución del sistema o de scripts.
 
 Existen **dos tipos principales** de variables en Linux:
