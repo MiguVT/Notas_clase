@@ -757,7 +757,7 @@ Ejemplo para ejecutar un script todos los días a las 2 AM:
 
 ---
 
-### 🛜 **Uso en Raspberry Pi y OpenWRT**
+### 💻 **Uso en Raspberry Pi y OpenWRT**
 En mi caso, uso `cron` para:
 - Apagar/encender procesos en mi **Raspberry Pi**.
 - Reiniciar interfaces o hacer backups automáticos en **OpenWRT**.
