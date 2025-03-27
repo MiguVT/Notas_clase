@@ -400,7 +400,7 @@ echo -e "Esto se detiene aquí\cNO SE IMPRIME"
 
 ---
 
-## **6.2 Servicios del Sistema**
+## **6.3 Servicios del Sistema**
 
 ###### 27/03/25
 Los **servicios del sistema** son procesos que se ejecutan en segundo plano (también llamados *daemons*), que se inician durante el arranque del sistema o bajo demanda. Permanecen activos a la espera de ser requeridos por el sistema o el usuario para cumplir alguna función específica (como red, sonido, interfaz gráfica...).
