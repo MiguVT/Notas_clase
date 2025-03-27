@@ -397,3 +397,140 @@ echo $NOMBRE
 echo -e "Hola\tmundo\nEsto es un salto de línea"
 echo -e "Esto se detiene aquí\cNO SE IMPRIME"
 ```
+
+---
+
+## **6.2 Servicios del Sistema**
+
+###### 27/03/25
+Los **servicios del sistema** son procesos que se ejecutan en segundo plano (también llamados *daemons*), que se inician durante el arranque del sistema o bajo demanda. Permanecen activos a la espera de ser requeridos por el sistema o el usuario para cumplir alguna función específica (como red, sonido, interfaz gráfica...).
+
+---
+
+## 🌀 **Niveles de Ejecución (Runlevels)**
+
+En los sistemas Linux tradicionales, especialmente en distribuciones antiguas como **Ubuntu 6.06 LTS**, el sistema de arranque se basa en **SysVinit** (*System V Init*), una adaptación del sistema AT&T UNIX. Este sistema organiza el arranque por niveles de ejecución llamados **runlevels**.
+
+### **Tabla de Runlevels estándar:**
+
+| Nivel | Descripción                                  |
+|-------|----------------------------------------------|
+| 0     | Apagar el equipo                              |
+| 1     | Modo monousuario (solo root)                  |
+| 2     | Multiusuario sin red                          |
+| 3     | Multiusuario con red                          |
+| 4     | Igual que 3 (usado para personalización)      |
+| 5     | Multiusuario con red y entorno gráfico (GUI)  |
+| 6     | Reiniciar                                     |
+| S     | Sinónimo del nivel 1                          |
+
+> 🔒 **Runlevels 0, 1 y 6** están reservados. Los demás pueden modificarse según la distribución.
+
+---
+
+### 📌 ¿Cómo ver el nivel de ejecución?
+
+```bash
+who -r               # Muestra el nivel de ejecución actual
+runlevel             # Muestra el runlevel anterior y actual
+systemctl list-units --type=target   # En sistemas con systemd
+```
+
+---
+
+## 🔁 **Upstart y eventos**
+
+Desde **Ubuntu 6.10** se introduce **Upstart**, que reemplaza a SysVinit con un sistema de arranque basado en **eventos**. Los servicios no se inician en orden fijo, sino en función de eventos del sistema como `startup`, `filesystem mounted`, etc.
+
+Upstart usó el comando `initctl` para gestionar servicios, pero fue reemplazado posteriormente.
+
+---
+
+## 🧠 **systemd (Desde Ubuntu 15.04)**
+
+A partir de Ubuntu **15.04**, se adopta por defecto **systemd**, un sistema moderno de inicialización que mejora la **paralelización**, el **arranque más rápido**, y la **gestión unificada de servicios y procesos**.
+
+- **El proceso con PID 1** es ahora `systemd`.
+- Utiliza unidades de tipo `.service`, `.target`, `.mount`, etc.
+- Sustituye definitivamente a Upstart y SysVinit.
+
+---
+
+### 🎯 Objetivos de `systemd`:
+
+- Mejorar el tiempo de arranque del sistema.
+- Unificar y simplificar la gestión de servicios.
+- Ejecutar procesos en paralelo donde sea posible.
+
+---
+
+### 🔧 Comando principal: `systemctl`
+
+Se usa para gestionar servicios y unidades del sistema.
+
+```bash
+systemctl list-units --type=service        # Lista todos los servicios activos
+systemctl list-units --type=service --state=enabled   # Solo los servicios habilitados al arranque
+```
+
+---
+
+### 📋 Servicios esenciales a conocer:
+
+| Servicio           | Función                                 |
+|--------------------|------------------------------------------|
+| `gdm` / `lightdm`  | Gestor de inicio de sesión gráfica (GUI) |
+| `networkmanager`   | Gestión de red para usuarios             |
+| `cpus`             | Gestión de CPUs                          |
+| `cups`             | Servicio de impresión                    |
+| `cron`             | Programación de tareas automáticas       |
+| `ssh`              | Conexiones remotas                       |
+| `bluetooth`        | Control de dispositivos Bluetooth        |
+
+---
+
+### 🧾 Script `service`
+
+Aunque `systemctl` es la herramienta recomendada, aún se utiliza el script clásico `service` para controlar servicios.
+
+```bash
+sudo service apache2 start
+sudo service network-manager status
+```
+
+Internamente, `service` redirige las órdenes a `systemctl` si el sistema usa systemd.
+
+---
+
+## 📴 Parada del Sistema
+
+Durante el proceso de **apagado**, se utilizan servicios específicos para gestionar correctamente la interrupción del sistema:
+
+### **Servicios implicados:**
+- **`acpi`** y **`acpid`**: Detectan eventos físicos como presionar el botón de apagado.  
+  Si se detecta, se notifica al sistema operativo que debe apagarse correctamente.
+
+---
+
+### **Comandos de parada y reinicio**
+
+| Comando       | Acción                                 |
+|---------------|----------------------------------------|
+| `halt`        | Detiene todos los procesos y el sistema |
+| `poweroff`    | Igual que halt, pero apaga físicamente  |
+| `reboot`      | Reinicia el sistema                     |
+| `shutdown`    | Apagado o reinicio programado           |
+
+```bash
+shutdown -h now         # Apagar inmediatamente
+shutdown -r +5 "Reiniciando en 5 minutos"   # Reinicio con aviso
+```
+
+---
+
+### 🎯 Nota final
+
+🔹 En un sistema **de escritorio**, lo normal es que trabaje en el **nivel de ejecución 5** (multiusuario con red y entorno gráfico).  
+🔹 La gestión moderna de servicios se realiza con **systemd y systemctl**, siendo la forma estándar (y mas estable) en la mayoría de distribuciones actuales.
+
+---
