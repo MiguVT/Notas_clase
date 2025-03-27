@@ -1,4 +1,4 @@
-# **Práctica: Archivos, permisos y usuarios en Linux**
+![image](https://github.com/user-attachments/assets/c22a50b2-f737-4c7e-a756-30795791742b)# **Práctica: Archivos, permisos y usuarios en Linux**
 
 ## **Objetivo**
 Familiarizarse con los tipos de archivos en Linux, su gestión básica, permisos, propietarios y comandos relevantes. Usare WebVM ya que suele gustarme probar las nuevas tecnologia y es algo que con el tiempo cada vez sera muy importante, es lo mismo que virtualizar con una aplicacion pero desde la web con la api que tiene los navegadores.
@@ -11,13 +11,15 @@ Debido a las limitaciones de el sistema operativo de WebVM, lo hare tanto en VMW
 touch prueba
 ```
 ![image](https://github.com/user-attachments/assets/ca7a53e5-86b2-4a3b-8d2e-c01fe54c2e84)
+![image](https://github.com/user-attachments/assets/07704fae-beec-4be3-a887-c1df0e5d4fcb)
 
 
 Verifica su comportamiento con:
 ```bash
 man touch
 ```
-[captura: man touch] - Lo hare en ubuntu porque no funciona en WebVM
+WebVM no contiene el comando man
+![image](https://github.com/user-attachments/assets/7e17c92a-fd33-4cef-99c8-187381c5ae47)
 
 ---
 
@@ -29,6 +31,8 @@ ls -l prueba
 
 Referencia (Tambien lo tengo en el cuaderno): [https://en.wikipedia.org/wiki/Unix_file_types](https://en.wikipedia.org/wiki/Unix_file_types)
 ![image](https://github.com/user-attachments/assets/fb56715b-3162-45ab-80d2-e83345caec4c)
+![image](https://github.com/user-attachments/assets/79ccc11a-e287-49c8-9eef-20fab0f5afa2)
+
 
 ---
 
@@ -38,6 +42,7 @@ file prueba
 ```
 - Nos indica que es un archivo vacío (empty).
 ![image](https://github.com/user-attachments/assets/247def79-0ef8-42b0-8d78-9a79d6b86c62)
+![image](https://github.com/user-attachments/assets/4c0ec69d-db21-4132-a726-6d33d06033ef)
 
 ---
 
@@ -51,19 +56,21 @@ file prueba
 ```
 - Ahora indica "ASCII text" o similar.
 ![image](https://github.com/user-attachments/assets/6384b6e6-c793-4710-ae83-6da5d4416d88)
+![image](https://github.com/user-attachments/assets/eeab6460-314c-4baa-a6e5-7b3105bab847)
 
 ---
 
 ### **5. Descargar una página con wget**
+WebVM no tiene internet.
 ```bash
-wget www.jesuitasrioja.org
+wget www.miguvt.com
 ```
-[captura: wget www.jesuitasrioja.org] - Lo hare en ubuntu porque el S.O. de WebVM no lo soporta 
+Como no funciona wget en la vm porque las webs protegen contra agentes como wget, he decidido hacer una web simple en local.
 
 ```bash
 file index.html
 ```
-[captura: file index.html] - Lo mismo q el anterior, al no tener el index.html
+![image](https://github.com/user-attachments/assets/9c8cc968-cbcd-40a2-951e-9d923233b267)
 
 ---
 
@@ -73,7 +80,8 @@ mv index.html index
 file index
 ```
 - Se reconoce igualmente como HTML por su contenido.
-[captura: file index] - Lo mismo q lo anterior, lo hare en ubuntu.
+![image](https://github.com/user-attachments/assets/f2e44d76-5c30-482e-a969-8dbab2920519)
+
 
 ---
 
@@ -84,6 +92,8 @@ file ~/Escritorio
 ```
 WebVM:
 ![image](https://github.com/user-attachments/assets/c8c55313-ba58-4ae4-89ee-240aead141d2)
+El comprotamiento en ubuntu es diferente ya sea porque es una version mas antigua o algo parecido.
+![image](https://github.com/user-attachments/assets/ae61c389-9353-4a0c-8af8-1151a074fce4)
 
 ---
 
