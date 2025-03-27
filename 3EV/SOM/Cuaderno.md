@@ -433,7 +433,7 @@ En los sistemas Linux tradicionales, especialmente en distribuciones antiguas co
 ```bash
 who -r               # Muestra el nivel de ejecución actual
 runlevel             # Muestra el runlevel anterior y actual
-systemctl list-units --type=target   # En sistemas con systemd
+ list-units --type=target   # En sistemas con systemd
 ```
 
 ---
@@ -464,17 +464,6 @@ A partir de Ubuntu **15.04**, se adopta por defecto **systemd**, un sistema mode
 
 ---
 
-### 🔧 Comando principal: `systemctl`
-
-Se usa para gestionar servicios y unidades del sistema.
-
-```bash
-systemctl list-units --type=service        # Lista todos los servicios activos
-systemctl list-units --type=service --state=enabled   # Solo los servicios habilitados al arranque
-```
-
----
-
 ### 📋 Servicios esenciales a conocer:
 
 | Servicio           | Función                                 |
@@ -499,6 +488,64 @@ sudo service network-manager status
 ```
 
 Internamente, `service` redirige las órdenes a `systemctl` si el sistema usa systemd.
+
+---
+
+### **📦 systemctl para gestión de servicios**
+
+El comando `systemctl` permite **iniciar, detener, reiniciar y comprobar el estado** de los servicios del sistema bajo `systemd`.
+
+#### 🛠️ Comandos básicos:
+
+```bash
+# Iniciar un servicio
+sudo systemctl start nombre_servicio
+
+# Detener un servicio
+sudo systemctl stop nombre_servicio
+
+# Reiniciar un servicio
+sudo systemctl restart nombre_servicio
+
+# Recargar configuración sin reiniciar
+sudo systemctl reload nombre_servicio
+
+# Consultar el estado de un servicio
+sudo systemctl status nombre_servicio
+```
+
+#### 🔄 Habilitar y deshabilitar servicios:
+
+```bash
+# Habilitar un servicio para que se inicie automáticamente al arrancar
+sudo systemctl enable nombre_servicio
+
+# Deshabilitar un servicio (no se iniciará al arrancar)
+sudo systemctl disable nombre_servicio
+```
+
+#### 🧼 Otros comandos útiles:
+
+```bash
+# Ver todos los servicios activos
+systemctl list-units --type=service
+
+# Ver todos los servicios habilitados para arrancar
+systemctl list-unit-files --type=service --state=enabled
+
+# Recargar todos los archivos de configuración del sistema
+sudo systemctl daemon-reexec
+```
+
+#### 🧩 Ejemplo práctico:
+
+```bash
+sudo systemctl start ssh
+sudo systemctl enable ssh
+sudo systemctl status ssh
+```
+
+Esto **inicia**, **habilita al arranque** y **muestra el estado** del servicio SSH, común en conexiones remotas.
 
 ---
 
