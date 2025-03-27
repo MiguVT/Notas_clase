@@ -581,3 +581,183 @@ shutdown -r +5 "Reiniciando en 5 minutos"   # Reinicio con aviso
 🔹 La gestión moderna de servicios se realiza con **systemd y systemctl**, siendo la forma estándar (y mas estable) en la mayoría de distribuciones actuales.
 
 ---
+
+## **6.3.1 Introducción a los paquetes**
+
+En Linux, **un paquete** es un archivo comprimido que contiene todo lo necesario para instalar una aplicación o herramienta: ejecutables, bibliotecas, configuraciones, scripts de instalación, etc.
+
+Cuando un paquete ya viene listo para instalarse en un sistema, ya compilado en codigo maquina, se le llama **paquete binario**.
+
+### 📦 Tipos principales de paquetes:
+- **`.deb`**: usado en distribuciones basadas en **Debian** como Ubuntu.
+- **`.rpm`**: usado en distribuciones como **Red Hat**, **Fedora** o **CentOS**.
+- **`.tgz` / `.tar.gz`**: archivos comprimidos que pueden contener cualquier cosa (usado comúnmente para software distribuido sin gestor de paquetes).
+
+---
+
+## **6.4 Instalación y gestión de paquetes**
+
+Una vez instalado el sistema operativo, muchas veces necesitaremos instalar software adicional o actualizarlo. En **Ubuntu**, esto se hace fácilmente mediante **paquetes**.
+
+Puedes actualizar desde la aplicación **"Actualización de software"**, y configurar sus preferencias desde el botón de configuración.
+
+---
+
+## **6.4.2 Paquete tipo `.deb` y APT**
+
+Ubuntu usa paquetes `.deb`. Puedes instalar estos paquetes manualmente o con **gestores de paquetes** como:
+
+- `dpkg`: gestiona paquetes individuales `.deb`.
+- `apt`, `apt-get`, `apt-cache`: sistema avanzado de gestión de paquetes que **resuelve dependencias automáticamente**.
+
+---
+
+### 📁 **Gestores gráficos de paquetes**
+
+En Ubuntu puedes usar:
+- **GNOME Software**
+- **Synaptic Package Manager**
+- **Muon Package Manager**
+
+---
+
+### 🧩 **APT - Herramienta más común en Ubuntu**
+
+#### Comandos esenciales:
+
+```bash
+# Actualizar lista de paquetes
+sudo apt update
+
+# Actualizar todos los paquetes instalados
+sudo apt upgrade
+
+# Instalar un paquete
+sudo apt install nombre
+
+# Eliminar un paquete
+sudo apt remove nombre
+
+# Eliminar un paquete con sus archivos de configuración
+sudo apt purge nombre
+
+# Buscar un paquete
+apt search nombre
+
+# Mostrar información de un paquete
+apt show nombre
+```
+
+---
+
+### 📦 Otros comandos importantes:
+
+- `apt-get`: versión clásica de APT. Tiene las mismas funciones que `apt`.
+- `apt-cache`: permite buscar paquetes, ver dependencias, etc.
+- `apt-cdrom`: usa un CD/DVD como fuente de instalación.
+- `dpkg`: instala directamente un `.deb`.
+
+#### Ejemplo:
+```bash
+sudo dpkg -i paquete.deb
+sudo apt install -f  # para arreglar dependencias
+```
+
+---
+
+### 🖥️ **Instalar entornos gráficos desde consola**
+Puedes instalar diferentes escritorios:
+```bash
+sudo apt install gnome
+sudo apt install kde-plasma-desktop
+sudo apt install xfce4
+sudo apt install cinnamon
+```
+
+---
+
+## **6.4.3 Otros tipos de paquetes**
+
+### 🎒 Archivos `.tgz`, `.tar.gz`, `.tar.bz2`
+Son archivos comprimidos. Se extraen así:
+
+```bash
+tar -xvzf archivo.tar.gz   # gzip
+tar -xvjf archivo.tar.bz2  # bzip2
+```
+
+### 🗜️ Compresión y empaquetado desde terminal
+
+```bash
+gzip archivo.txt     # Comprimir
+gunzip archivo.txt.gz
+
+bzip2 archivo.txt
+bunzip2 archivo.txt.bz2
+
+zip archivo.zip archivo.txt
+unzip archivo.zip
+
+rar a archivo.rar archivo.txt
+unrar x archivo.rar
+```
+
+### 📦 `.rpm` (en distribuciones RedHat)
+```bash
+sudo rpm -i paquete.rpm
+sudo rpm -e nombre_paquete
+```
+
+---
+
+## **6.5 Programación de tareas**
+
+La programación de tareas permite **automatizar comandos** o scripts para que se ejecuten en momentos específicos.
+
+---
+
+### ⏱️ **Comando `at`**
+
+Permite programar una tarea **una sola vez**.
+
+```bash
+at 15:30
+at> echo "Hola" > ~/mensaje.txt
+CTRL+D  # para confirmar
+```
+
+- `atq`: muestra las tareas programadas.
+- `atrm <ID>`: elimina una tarea programada.
+- Archivos relacionados:
+  - `/etc/at.allow` y `/etc/at.deny`
+
+---
+
+### 📆 **`cron` y `crontab`**
+
+`cron` se usa para **tareas repetitivas**.
+
+```bash
+crontab -e    # editar tareas
+crontab -l    # listar tareas
+```
+
+Ejemplo para ejecutar un script todos los días a las 2 AM:
+```
+0 2 * * * /home/usuario/script.sh
+```
+
+#### Ficheros importantes:
+- `/etc/crontab`
+- `/var/spool/cron/crontabs/`
+- `/etc/cron.d/`
+- `/etc/cron.daily/`
+- `/etc/cron.weekly/`
+- `/etc/cron.monthly/`
+
+---
+
+### 🛜 **Uso en Raspberry Pi y OpenWRT**
+En mi caso, uso `cron` para:
+- Apagar/encender procesos en mi **Raspberry Pi**.
+- Reiniciar interfaces o hacer backups automáticos en **OpenWRT**.
